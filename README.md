@@ -23,11 +23,11 @@
 ### ver0.1 현재까지의 카테고리
 
 
-controllers - 각 라우터들을 처리할 컨트롤러입니다.
-routers - 각 라우터들을 컨트롤러로 연결합니다.
-views - PUG 엔진으로 front를 담당합니다.
+controllers - 각 라우터들을 처리할 컨트롤러입니다. </br>
+routers - 각 라우터들을 컨트롤러로 연결합니다. </br>
+views - PUG 엔진으로 front를 담당합니다. </br>
 
-app.js - 모든 라우트와 미들웨어를 다룹니다.
-init.js - 서버실행만 담당합니다.
-middleWare.js - 변수가 전역적으로 쓰일수 있게 미들웨어로 전역로컬을 선언하였습니다.
-routes.js - 웹페이지에 사용될 전체 URL을 다루었습니다.
+app.js - 모든 라우트와 미들웨어를 다룹니다.</br>
+init.js - 서버실행만 담당합니다.</br>
+middleWare.js - 변수가 전역적으로 쓰일수 있게 미들웨어로 전역로컬을 선언하였습니다.</br>
+routes.js - 웹페이지에 사용될 전체 URL을 다루었습니다.</br>
