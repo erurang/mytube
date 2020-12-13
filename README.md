@@ -2,7 +2,7 @@
 
 유튜브 클론을 해보고 싶어서 만들고 있습니다.
 
-현재까지 사용된 기술스택은 PUG Javascript 입니다.
+현재까지 사용된 기술스택은 PUG Javascript NodeJs입니다.
 
 모듈은 npm express, nodemon, babel을 사용하였습니다.
 
