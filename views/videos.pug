@@ -1,5 +1,7 @@
 extends ./layouts/main.pug
 
+include ./mixins/videoBlock.pug
+
 block content
     ul
         li
@@ -9,3 +11,12 @@ block content
         li
             a(href=routes.boards) 게시판
     a(href=`/videos${routes.upload}`) 업로드
+
+    .videos
+        each video in videos
+            +videoBlock({
+                title:video.title,
+                views:video.views,
+                fileUrl:video.fileUrl,
+                id:video.id
+            })
