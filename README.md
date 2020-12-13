@@ -1,32 +1,23 @@
-## Mytube
+## Mytube (ver0.2)
 
-유튜브 클론을 해보고 싶어서 만들고 있습니다.
+ver0.1 -- 
+사용된 기술스택은 PUG Javascript NodeJs입니다.
 
-현재까지 사용된 기술스택은 PUG Javascript NodeJs입니다.
+ver0.2 --
+mongodb와 mongoose를 이용하여 데이터베이스를 만들었습니다.
+upload기능을 구현하였습니다.
+videodetail 기능을 구현하였습니다.
 
-모듈은 npm express, nodemon, babel을 사용하였습니다.
+### ver0.2 카테고리
 
-### 페이지구상은 이렇습니다.
-
-![KakaoTalk_Photo_2020-12-13-10-58-45](https://user-images.githubusercontent.com/56789064/102001173-37472280-3d32-11eb-93bb-98d45d069e35.png)
-
-상위 헤더에는 로고와 검색창을 구현합니다. 검색창에선 영상이 검색되도록 할 계획입니다.
-
-탭을 3개로 나누어
-
-메인탭에서는 현재버전까지의 구현된 내용들.. 등등 을 적을예정이고
-
-영상탭에서는 유튜브에서처럼 올라온 영상을 나열해주고 글쓰기/수정/삭제를 하게 하려합니다.
-
-게시판탭에서는 아무나 글을 쓸수있게 만들 예정입니다.
-
-### ver0.1 현재까지의 카테고리
-
-
+Folder// </br>
 controllers - 각 라우터들을 처리할 컨트롤러입니다. </br>
 routers - 각 라우터들을 컨트롤러로 연결합니다. </br>
 views - PUG 엔진으로 front를 담당합니다. </br>
-
+models - mongodb의 Schema 형식입니다. </br>
+uploads - multer 미들웨어를 사용하여 upload시에 파일의 링크가 저장됩니다 </br>
+</br>
+Files// </br>
 app.js - 모든 라우트와 미들웨어를 다룹니다.</br>
 init.js - 서버실행만 담당합니다.</br>
 middleWare.js - 변수가 전역적으로 쓰일수 있게 미들웨어로 전역로컬을 선언하였습니다.</br>
