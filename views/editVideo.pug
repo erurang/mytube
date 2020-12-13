@@ -1,0 +1,9 @@
+extends ./layouts/main.pug
+
+block content
+    .edit__form
+        form(action="", method="post")
+            input(type="text",placeholder="제목",name="title")
+            textarea(name="description",placeholder="내용")
+            input(type="submit",value="update video")
+        a(href="") 삭제

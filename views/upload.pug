@@ -1,0 +1,12 @@
+//- 업로드
+extends ./layouts/main.pug
+
+block content
+    .upload__form
+        form(action="", method="post", enctype="multipart/form-data")
+            label(for="file") 영상 파일
+            input(type="file", id="file",name="videoFile",required=true,accept="video/*")
+            input(type="text",placeholder="제목",name="title")
+            textarea(name="description",placeholder="내용")
+            input(type="submit",value="upload video")
+        
