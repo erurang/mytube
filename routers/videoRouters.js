@@ -1,5 +1,5 @@
 import express from 'express';
-import { editVideo, getUpload, postUpload, videoDetail, videos } from '../controllers/videoControllers.js';
+import { deleteVideo, getEditVideo, getUpload, postEditVideo, postUpload, videoDetail, videos } from '../controllers/videoControllers.js';
 import { uploadVideo } from '../middleWare.js';
 import routes from '../routes.js';
 
@@ -16,10 +16,10 @@ videoRouter.post(routes.upload,uploadVideo,postUpload);
 videoRouter.get(routes.videoDetail(),videoDetail);
 
 // videos/:id/edit
-videoRouter.get(routes.editVideo(),editVideo);
-videoRouter.post(routes.editVideo(),editVideo);
+videoRouter.get(routes.editVideo(),getEditVideo);
+videoRouter.post(routes.editVideo(),postEditVideo);
 
 // videos/:id/delete
-videoRouter.get(routes.deleteVideo(),(req,res)=>res.send("delete video"));
+videoRouter.get(routes.deleteVideo(),deleteVideo);
 
 export default videoRouter; 

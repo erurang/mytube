@@ -1,5 +1,6 @@
 //- 게시판
 extends ./layouts/main.pug
+include ./mixins/boardBlock.pug
 
 block content
     ul
@@ -9,4 +10,11 @@ block content
             a(href=routes.videos) 영상
         li
             a(href=routes.boards) 게시판
-    p 게시판
+    each lists in list
+        +boardBlock({
+            title:lists.title,
+            createdAt:lists.createdAt,
+            views:lists.views
+        })    
+        
+    a(href=`/boards${routes.boardsUpload}`) 글쓰기

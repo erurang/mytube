@@ -15,28 +15,82 @@ export const getUpload = (req, res) => {
   res.render("upload", { pageName: "업로드" });
 };
 
-export const postUpload = async (req,res) => {
-    const {
-        body: {
-            title,description
-        },
-        file: {path},
-    } = req;
-    
-    const newVideo = await Video.create({
-        fileUrl: path,
-        title,
-        description
-    });
-    console.log(newVideo);
-    res.redirect(routes.videoDetail(newVideo.id))
-}
+export const postUpload = async (req, res) => {
+  const {
+    body: { title, description },
+    file: { path },
+  } = req;
 
-export const videoDetail = (req, res) => {
-
-  res.render("videoDetail", { pageName: "비디오 상세" });
+  const newVideo = await Video.create({
+    fileUrl: path,
+    title,
+    description,
+  });
+  console.log(newVideo);
+  res.redirect(routes.videoDetail(newVideo.id));
 };
 
-export const editVideo = (req, res) => {
-  res.render("editVideo", { pageName: "수정"});
+export const videoDetail = async (req, res) => {
+  // params 는 url에 있는 정보를 가져올수있다.
+  // console.log(req.params);
+  const {
+    params: { id },
+  } = req;
+
+  try {
+    const video = await Video.findById(id);
+    res.render("videoDetail", { pageName: video.title, video });
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.videos);
+  }
+};
+
+export const getEditVideo = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+
+  try {
+    const video = await Video.findById(id);
+    res.render("editVideo", { pageName: video.title, video });
+  } catch (error) {
+    res.redirect(routes.videos);
+  }
+};
+
+export const postEditVideo = async (req, res) => {
+  const {
+    params: { id },
+    body: { title, description },
+  } = req;
+
+  try {
+    const video = await Video.findOneAndUpdate(
+      { _id: id },
+      { title, description }
+    );
+    res.render(routes.videoDetail(id), {
+      pageName: `${video.title}`,
+      video,
+    });
+  } catch (error) {
+    res.redirect(routes.videos);
+  }
+  res.render("editVideo", { pageName: "수정" });
+};
+
+export const deleteVideo = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+
+  
+  try {
+    await Video.findOneAndDelete({ _id: id });
+  } catch (error) {
+    console.log(error);
+  }
+
+  res.redirect(routes.videos);
 };

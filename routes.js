@@ -15,11 +15,21 @@ const DELETE_VIDEO = "/:id/delete";
 // 게시판
 
 const BOARDS = "/boards";
+const BOARDS_DETAIL = "/:id"
+const BOARDS_UPLOAD = "/upload";
 
 const routes = {
   home: HOME,
   search: SEARCH,
   boards: BOARDS,
+  boardsDetail: (id) => {
+    if (id){
+      return `/boards/${id}`;
+    }else{
+      return BOARDS_DETAIL;
+    }
+  },
+  boardsUpload: BOARDS_UPLOAD,
   videos: VIDEOS,
   upload: UPLOAD,
   videoDetail: (id) => {
