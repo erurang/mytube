@@ -1,6 +1,6 @@
 mixin boardBlock(board={})
     .boardBlock
-        a(href=routes.boardsDetail(list.id))
+        a(href=routes.boardsDetail(board.id))
             h4=board.title
             h4=board.createdAt
             p=board.views

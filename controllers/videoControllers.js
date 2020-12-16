@@ -66,18 +66,17 @@ export const postEditVideo = async (req, res) => {
   } = req;
 
   try {
-    const video = await Video.findOneAndUpdate(
-      { _id: id },
-      { title, description }
-    );
-    res.render(routes.videoDetail(id), {
-      pageName: `${video.title}`,
-      video,
-    });
+    const video = await Video.findOneAndUpdate({ _id: id }, { title, description });
+    
+    res.redirect(routes.videoDetail(video.id))
+    // res.render(routes.videoDetail(video.id), {
+    //   pageName: `${video.title}`,
+    //   video,
+    // });
   } catch (error) {
+    console.log(error)
     res.redirect(routes.videos);
   }
-  res.render("editVideo", { pageName: "수정" });
 };
 
 export const deleteVideo = async (req, res) => {
@@ -85,7 +84,6 @@ export const deleteVideo = async (req, res) => {
     params: { id },
   } = req;
 
-  
   try {
     await Video.findOneAndDelete({ _id: id });
   } catch (error) {

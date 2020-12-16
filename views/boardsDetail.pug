@@ -1,4 +1,6 @@
 extends ./layouts/main.pug
 
 block content
-    p 글상세
+    p=title
+    span=description
+    a(href=routes.boardsEdit(id)) 수정

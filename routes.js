@@ -15,17 +15,33 @@ const DELETE_VIDEO = "/:id/delete";
 // 게시판
 
 const BOARDS = "/boards";
-const BOARDS_DETAIL = "/:id"
 const BOARDS_UPLOAD = "/upload";
+const BOARDS_DETAIL = "/:id";
+const BOARDS_EDIT = "/:id/edit";
+const BOARDS_DELETE = "/:id/delete";
 
 const routes = {
   home: HOME,
   search: SEARCH,
   boards: BOARDS,
+  boardsDelete: (id) => {
+    if (id) {
+      return `/boards/${id}/delete`;
+    } else {
+      return BOARDS_DELETE;
+    }
+  },
+  boardsEdit: (id) => {
+    if (id) {
+      return `/boards/${id}/edit`;
+    } else {
+      return BOARDS_EDIT;
+    }
+  },
   boardsDetail: (id) => {
-    if (id){
+    if (id) {
       return `/boards/${id}`;
-    }else{
+    } else {
       return BOARDS_DETAIL;
     }
   },
