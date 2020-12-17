@@ -5,9 +5,9 @@ const BoardSchema = new mongoose.Schema({
     type: String,
     required: "제목을 적어주세요",
   },
-  description:{
-      type:String,
-      required:"내용"
+  description: {
+    type: String,
+    required: "내용",
   },
   views: {
     type: Number,
@@ -17,6 +17,12 @@ const BoardSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
 });
 
 const model = mongoose.model("Board", BoardSchema);

@@ -3,7 +3,7 @@ import routes from "../routes.js";
 
 export const videos = async (req, res) => {
   try {
-    const videos = await Video.find({});
+    const videos = await Video.find({}).sort({createdAt : -1});
     res.render("videos", { pageName: "영상", videos });
   } catch (error) {
     console.log(error);
@@ -20,7 +20,7 @@ export const postUpload = async (req, res) => {
     body: { title, description },
     file: { path },
   } = req;
-
+  
   const newVideo = await Video.create({
     fileUrl: path,
     title,

@@ -11,7 +11,7 @@ const app = express()
 
 app.set("view engine","pug");
 
-app.use("/uploads",express.static("uploads"));
+app.use("/videos/uploads",express.static("uploads"));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));

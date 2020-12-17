@@ -3,7 +3,7 @@ import routes from "../routes.js";
 
 export const boards = async (req, res) => {
   try {
-    const list = await Board.find({});
+    const list = await Board.find({}).sort({createdAt : -1});
     res.render("boards", { pageName: "게시판", list });
   } catch (error) {
     console.log(error);
@@ -14,7 +14,7 @@ export const boards = async (req, res) => {
 export const getBoardsUpload = (req, res) => {
   res.render("boardsUpload", { pageName: "글쓰기", Board });
 };
-
+  
 export const postBoardsUpload = async (req, res) => {
   const {
     body: { title, description },
@@ -25,8 +25,7 @@ export const postBoardsUpload = async (req, res) => {
     description,
   });
   console.log(newBoards);
-  res.redirect(routes.boards);
-  // res.redirect(routes.videoDetail(newVideo.id));
+  res.redirect(routes.boardsDetail(newBoards.id));
 };
 
 export const boardDetail = async (req, res) => {
