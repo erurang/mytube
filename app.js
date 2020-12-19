@@ -9,16 +9,21 @@ import routes from "./routes.js";
 import joinRouter from "./routers/joinRouter.js";
 import loginRouter from "./routers/loginRouter.js";
 
+import MongoStore from "connect-mongo";
+import mongoose from "mongoose";
+
 import passport from "passport";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 
-import "./passport.js"
+import "./passport.js";
 
 import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
+
+const CookieStore = MongoStore(session);
 
 app.set("view engine", "pug");
 
@@ -33,6 +38,7 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     resave: true,
     saveUninitialized: false,
+    store: new CookieStore({ mongooseConnection: mongoose.connection }),
   })
 );
 // cookieParser가 쿠키를 해석하고
@@ -40,7 +46,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 // 그 쿠키에 맞는 정보를 req.user로 전달함. -> middleware에서 req.user로 이용함
-
 
 app.use(middleWare);
 
