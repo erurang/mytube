@@ -20,10 +20,27 @@ const BOARDS_DETAIL = "/:id";
 const BOARDS_EDIT = "/:id/edit";
 const BOARDS_DELETE = "/:id/delete";
 
+// 로그인관련
+
+const JOIN = "/join";
+const LOGIN = "/login";
+const LOGOUT = "/logout";
+
+// 유저관련
+
+const USERS = "/users";
+const USER_DETAIL = "/:id"
+const EDIT_PROFILE ="/edit_profile";
+const CHANGE_PASSWORD = "/change_password";
+
 const routes = {
   home: HOME,
   search: SEARCH,
   boards: BOARDS,
+  users: USERS,
+  userDetail:USER_DETAIL,
+  editProfile:EDIT_PROFILE,
+  changePassword:CHANGE_PASSWORD,
   boardsDelete: (id) => {
     if (id) {
       return `/boards/${id}/delete`;
@@ -69,5 +86,8 @@ const routes = {
       return DELETE_VIDEO;
     }
   },
+  join: JOIN,
+  login: LOGIN,
+  logout: LOGOUT,
 };
 export default routes;
