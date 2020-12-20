@@ -1,0 +1,12 @@
+//- 메인 홈화면 올라온 비디오가 순서대로 올라가있을 계획
+extends ./layouts/main.pug
+
+block content
+    ul
+        li
+            a(href=routes.home) 메인
+        li
+            a(href=routes.videos) 영상
+        li
+            a(href=routes.boards) 게시판
+    a(href=routes.userDetail(user._id)) 수정하기

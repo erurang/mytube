@@ -3,14 +3,14 @@ header.header
         a(href=routes.home) #{siteName}
     .header__button
         ul
-            if !user
+            if !loggedUser
                 li
                     a(href=routes.join) 가입하기
                 li
                     a(href=routes.login) 로그인
             else
                 li
-                    a(href=routes.profile) 프로필
+                    a(href=`/users${routes.me}`) 프로필
                 li
                     a(href=`/login${routes.logout}`) 로그아웃
     .header__form

@@ -19,6 +19,7 @@ import cookieParser from "cookie-parser";
 import "./passport.js";
 
 import dotenv from "dotenv";
+import userRouter from "./routers/userRouters.js";
 dotenv.config();
 
 const app = express();
@@ -62,7 +63,7 @@ app.use(routes.join, joinRouter);
 app.use(routes.login, loginRouter);
 
 // 유저
-// app.use(routes.users,)
+app.use(routes.users,userRouter);
 
 // 게시판
 app.use(routes.boards, boardsRouters);

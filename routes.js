@@ -29,18 +29,39 @@ const LOGOUT = "/logout";
 // 유저관련
 
 const USERS = "/users";
-const USER_DETAIL = "/:id"
-const EDIT_PROFILE ="/edit_profile";
+const USER_DETAIL = "/:id";
+const EDIT_PROFILE = "/edit_profile";
 const CHANGE_PASSWORD = "/change_password";
+const ME = "/me";
+
+// 소셜로그인
+
+const GITHUB = "/auth/github";
+const GITHUB_CALLBACK = "/auth/github/callback";
+
+const FACEBOOK = "/auth/facebook";
+const FACEBOOK_CALLBACK = "/auth/facebook/callback";
+
+const KAKAO = "/auth/kakao";
+const KAKAO_CALLBACK = "/auth/kakao/callback";
+
+const NAVER = "/auth/naver";
+const NAVER_CALLBACK = "/auth/naver/callback"
 
 const routes = {
   home: HOME,
   search: SEARCH,
   boards: BOARDS,
   users: USERS,
-  userDetail:USER_DETAIL,
-  editProfile:EDIT_PROFILE,
-  changePassword:CHANGE_PASSWORD,
+  userDetail: (id) => {
+    if (id) {
+      return `/users/${id}`;
+    } else {
+      return USER_DETAIL;
+    }
+  },
+  editProfile: EDIT_PROFILE,
+  changePassword: CHANGE_PASSWORD,
   boardsDelete: (id) => {
     if (id) {
       return `/boards/${id}/delete`;
@@ -89,5 +110,14 @@ const routes = {
   join: JOIN,
   login: LOGIN,
   logout: LOGOUT,
+  github: GITHUB,
+  githubCallback: GITHUB_CALLBACK,
+  facebook:FACEBOOK,
+  facebookCallback:FACEBOOK_CALLBACK,
+  kakao:KAKAO,
+  kakaoCallback:KAKAO_CALLBACK,
+  naver:NAVER,
+  naverCallback:NAVER_CALLBACK,
+  me: ME,
 };
 export default routes;

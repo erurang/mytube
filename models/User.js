@@ -10,6 +10,8 @@ const UserSchema = new mongoose.Schema({
   avataUrl: String,
   facebookId: Number,
   kakaoId: Number,
+  githubId:Number,
+  naverId:Number
 });
 
 // 유저스키마에 플러그인을 쓸건데 ( 플러그인 , 유저네임이 될 필드명엔 : )
