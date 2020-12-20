@@ -1,6 +1,6 @@
 import express from 'express';
 import { deleteVideo, getEditVideo, getUpload, postEditVideo, postUpload, videoDetail, videos } from '../controllers/videoControllers.js';
-import { uploadVideo } from '../middleWare.js';
+import { onlyLogin, uploadVideo } from '../middleWare.js';
 import routes from '../routes.js';
 
 const videoRouter = express.Router();
@@ -9,17 +9,17 @@ const videoRouter = express.Router();
 videoRouter.get(routes.home,videos);
 
 // videos/upload
-videoRouter.get(routes.upload,getUpload);
-videoRouter.post(routes.upload,uploadVideo,postUpload);
+videoRouter.get(routes.upload,onlyLogin,getUpload);
+videoRouter.post(routes.upload,onlyLogin,uploadVideo,postUpload);
 
 // videos/:id
 videoRouter.get(routes.videoDetail(),videoDetail);
 
 // videos/:id/edit
-videoRouter.get(routes.editVideo(),getEditVideo);
-videoRouter.post(routes.editVideo(),postEditVideo);
+videoRouter.get(routes.editVideo(),onlyLogin,getEditVideo);
+videoRouter.post(routes.editVideo(),onlyLogin,postEditVideo);
 
 // videos/:id/delete
-videoRouter.get(routes.deleteVideo(),deleteVideo);
+videoRouter.get(routes.deleteVideo(),onlyLogin,deleteVideo);
 
 export default videoRouter; 

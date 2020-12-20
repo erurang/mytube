@@ -12,7 +12,7 @@ header.header
                 li
                     a(href=routes.profile) 프로필
                 li
-                    a(href=routes.logout) 로그아웃
+                    a(href=`/login${routes.logout}`) 로그아웃
     .header__form
         form(action=routes.search, method="get")
             input(type="text" placeholder="검색" name="search")

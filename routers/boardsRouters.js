@@ -9,18 +9,19 @@ import {
   postBoardsEdit,
   postBoardsUpload,
 } from "../controllers/boardsControllers.js";
+import { onlyLogin } from "../middleWare.js";
 
 const boardsRouters = express.Router();
 
 boardsRouters.get(routes.home, boards);
 
-boardsRouters.get(routes.boardsUpload, getBoardsUpload);
-boardsRouters.post(routes.boardsUpload, postBoardsUpload);
+boardsRouters.get(routes.boardsUpload, onlyLogin, getBoardsUpload);
+boardsRouters.post(routes.boardsUpload, onlyLogin, postBoardsUpload);
 
 boardsRouters.get(routes.boardsDetail(), boardDetail);
 
-boardsRouters.get(routes.boardsEdit(), getBoardsEdit);
-boardsRouters.post(routes.boardsEdit(), postBoardsEdit);
+boardsRouters.get(routes.boardsEdit(), onlyLogin, getBoardsEdit);
+boardsRouters.post(routes.boardsEdit(), onlyLogin, postBoardsEdit);
 
-boardsRouters.get(routes.boardsDelete(), boardsDelete);
+boardsRouters.get(routes.boardsDelete(), onlyLogin, boardsDelete);
 export default boardsRouters;
