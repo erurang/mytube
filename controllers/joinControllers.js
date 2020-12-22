@@ -15,14 +15,20 @@ export const postJoin = async (req, res, next) => {
     res.render("join", { pageName: "가입" });
   } else {
     try {
-      // 가입
-      // 여기서 우리 user 모델로 오브젝트만 만듬
-      const user = await User({
-        name,
-        email,
-      });
-      await User.register(user, password);
-      next()
+      const user = await User.findOne({ email });
+
+      if (user) {
+        // 나중에 인풋창에 이미 존재한다고 표시하기
+        // 지금은 일단 로그인창으로 리다이렉트
+        res.redirect(routes.login);
+      } else {
+        const user = await User({
+          name,
+          email,
+        });
+        await User.register(user, password);
+        next();
+      }
     } catch (error) {
       console.log(error);
     }

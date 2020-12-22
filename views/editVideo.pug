@@ -3,7 +3,7 @@ extends ./layouts/main.pug
 block content
     .form__wrap
         form(action="", method="post")
-            input(type="text",placeholder="제목",name="title")
-            textarea(name="description",placeholder="내용")
-            input(type="submit",value="update video")
+            input(type="text",placeholder="제목",name="title",value=video.title)
+            textarea(name="description",placeholder="내용")=video.description
+            input(type="submit",value="수정")
         a(href=routes.deleteVideo(video.id)) 삭제

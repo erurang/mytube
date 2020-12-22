@@ -119,7 +119,8 @@ export const kakaoLoginCallback = async (
   profile,
   done
 ) => {
-  console.log(profile);
+  console.log(profile)
+  
   const {
     _json: {
       id,
@@ -143,7 +144,7 @@ export const kakaoLoginCallback = async (
         email,
         name: nickname,
         kakaoId: id,
-        avataUrl,
+        avataUrl:profile_image,
       });
       return done(null, newUser);
     }

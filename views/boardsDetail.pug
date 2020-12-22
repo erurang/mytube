@@ -3,4 +3,9 @@ extends ./layouts/main.pug
 block content
     p=title
     span=description
-    a(href=routes.boardsEdit(id)) 수정
+    if String(creator._id) === loggedUser._id
+        a(href=routes.boardsEdit(id)) 수정
+    p
+        a(href=routes.userDetail(creator._id))=creator.name
+    span=views
+    span=createdAt

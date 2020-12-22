@@ -1,14 +1,14 @@
 import routes from "./routes.js";
-
 import multer from "multer";
 
 const multerVideo = multer({ dest: "uploads/videos/" });
+const multerPicture = multer({ dest: "uploads/avata/" });
 
 export const middleWare = (req, res, next) => {
   res.locals.routes = routes;
   res.locals.siteName = "Mytube";
-  res.locals.loggedUser = req.user;
-
+  res.locals.loggedUser = req.user || ""
+  console.log(req.user)
   next();
 };
 
@@ -29,3 +29,5 @@ export const onlyLogin = (req, res, next) => {
 };
 
 export const uploadVideo = multerVideo.single("videoFile");
+export const uploadPicture = multerPicture.single("avataFile");
+

@@ -5,7 +5,14 @@ block content
     .video_player
         video(src=`./${video.fileUrl}` controls=true)
     .video__info
-        a(href=routes.editVideo(video.id)) 수정
+        if (loggedUser._id == video.creator._id)
+            a(href=routes.editVideo(video.id)) 수정
         h5.video_title=video.title
         span.video_views=video.views
+        span.video_created=video.createdAt
         p.video_description=video.description
+    .video__author
+        a(href=routes.userDetail(video.creator._id))=video.creator.name
+    
+            
+        

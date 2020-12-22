@@ -20,6 +20,7 @@ import "./passport.js";
 
 import dotenv from "dotenv";
 import userRouter from "./routers/userRouters.js";
+import apiRouter from "./routers/apiRouter.js";
 dotenv.config();
 
 const app = express();
@@ -28,6 +29,8 @@ const CookieStore = MongoStore(session);
 
 app.set("view engine", "pug");
 
+app.use("/uploads", express.static("uploads"))
+app.use("/users",express.static("uploads"));
 app.use("/videos/uploads", express.static("uploads"));
 
 app.use(cookieParser());
@@ -70,5 +73,7 @@ app.use(routes.boards, boardsRouters);
 
 // 비디오
 app.use(routes.videos, videoRouter);
+
+app.use(routes.api,apiRouter);
 
 export default app;

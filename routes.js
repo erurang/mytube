@@ -30,9 +30,11 @@ const LOGOUT = "/logout";
 
 const USERS = "/users";
 const USER_DETAIL = "/:id";
-const EDIT_PROFILE = "/edit_profile";
+const EDIT_PROFILE = "/:id/edit_profile";
 const CHANGE_PASSWORD = "/change_password";
 const ME = "/me";
+const MYPOST = "/:id/mypost";
+const YOURPOST = "/:id/yourpost";
 
 // 소셜로그인
 
@@ -46,7 +48,12 @@ const KAKAO = "/auth/kakao";
 const KAKAO_CALLBACK = "/auth/kakao/callback";
 
 const NAVER = "/auth/naver";
-const NAVER_CALLBACK = "/auth/naver/callback"
+const NAVER_CALLBACK = "/auth/naver/callback";
+
+// API
+
+const API = "/api";
+const REGISTER_VIEW = "/:id/view";
 
 const routes = {
   home: HOME,
@@ -60,8 +67,28 @@ const routes = {
       return USER_DETAIL;
     }
   },
-  editProfile: EDIT_PROFILE,
+  editProfile: (id) => {
+    if (id) {
+      return `/users/${id}/edit_profile`;
+    } else {
+      return EDIT_PROFILE;
+    }
+  },
   changePassword: CHANGE_PASSWORD,
+  myPost: (id) => {
+    if (id) {
+      return `/users/${id}/mypost`;
+    } else {
+      return MYPOST;
+    }
+  },
+  yourPost: (id) => {
+    if (id) {
+      return `/users/${id}/yourpost`;
+    } else {
+      return YOURPOST;
+    }
+  },
   boardsDelete: (id) => {
     if (id) {
       return `/boards/${id}/delete`;
@@ -112,12 +139,14 @@ const routes = {
   logout: LOGOUT,
   github: GITHUB,
   githubCallback: GITHUB_CALLBACK,
-  facebook:FACEBOOK,
-  facebookCallback:FACEBOOK_CALLBACK,
-  kakao:KAKAO,
-  kakaoCallback:KAKAO_CALLBACK,
-  naver:NAVER,
-  naverCallback:NAVER_CALLBACK,
+  facebook: FACEBOOK,
+  facebookCallback: FACEBOOK_CALLBACK,
+  kakao: KAKAO,
+  kakaoCallback: KAKAO_CALLBACK,
+  naver: NAVER,
+  naverCallback: NAVER_CALLBACK,
   me: ME,
+  api: API,
+  registerView: REGISTER_VIEW,
 };
 export default routes;
