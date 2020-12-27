@@ -3,19 +3,18 @@ extends ./layouts/main.pug
 include ./mixins/boardBlock.pug
 
 block content
-    ul
-        li
-            a(href=routes.home) 메인
-        li
-            a(href=routes.videos) 영상
-        li
-            a(href=routes.boards) 게시판
-    a(href=`/boards${routes.boardsUpload}`) 글쓰기
-    each lists in list
-        +boardBlock({
-            title:lists.title,
-            createdAt:lists.createdAt,
-            views:lists.views,
-            id:lists.id
-        })    
+    include ./partials/list.pug
+        a(href=`/boards${routes.boardsUpload}`, class="boardPost") 글쓰기
+    .main_boards
+        each lists in list
+            +boardBlock({
+                title:lists.title,
+                views:lists.views,
+                id:lists.id,
+                createdAt:lists.createdAt,
+                creator:lists.creator.name,
+                avata:lists.creator.avataUrl,
+                description:lists.description,
+                comments:lists.comments.length
+            })    
         

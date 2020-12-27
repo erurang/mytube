@@ -25,6 +25,7 @@ export const postJoin = async (req, res, next) => {
         const user = await User({
           name,
           email,
+          avataUrl : "https://mytubeclone.s3.amazonaws.com/avatar/a9cbfe8bfa2a2b98a408c2a6c1b42157"
         });
         await User.register(user, password);
         next();

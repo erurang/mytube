@@ -1,21 +1,20 @@
 extends ./layouts/main.pug
-
 include ./mixins/videoBlock.pug
 
 block content
-    ul
-        li
-            a(href=routes.home) 메인
-        li
-            a(href=routes.videos) 영상
-        li
-            a(href=routes.boards) 게시판
-    a(href=`/videos${routes.upload}`) 업로드
-    .videos
-        each video in videos
-            +videoBlock({
-                title:video.title,
-                views:video.views,
-                fileUrl:video.fileUrl,
-                id:video.id
-            })
+    include ./partials/list.pug
+        a(href=`/videos${routes.upload}`,class="videoPost") 업로드
+    .main_videos
+        .videoList
+            each video in videos
+                +videoBlock({
+                    id:video.id,
+                    title:video.title,
+                    description:video.description,
+                    views:video.views,
+                    createdAt:video.createdAt,
+                    creator:video.creator.name,
+                    avata:video.creator.avataUrl,
+                    fileUrl:video.fileUrl,
+                    comment:video.comments.length,
+                })

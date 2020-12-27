@@ -4,6 +4,7 @@ import {
   boardDetail,
   boards,
   boardsDelete,
+  boardViews,
   getBoardsEdit,
   getBoardsUpload,
   postBoardsEdit,
@@ -18,7 +19,7 @@ boardsRouters.get(routes.home, boards);
 boardsRouters.get(routes.boardsUpload, onlyLogin, getBoardsUpload);
 boardsRouters.post(routes.boardsUpload, onlyLogin, postBoardsUpload);
 
-boardsRouters.get(routes.boardsDetail(), boardDetail);
+boardsRouters.get(routes.boardsDetail(),boardViews ,boardDetail);
 
 boardsRouters.get(routes.boardsEdit(), onlyLogin, getBoardsEdit);
 boardsRouters.post(routes.boardsEdit(), onlyLogin, postBoardsEdit);

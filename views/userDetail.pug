@@ -2,16 +2,10 @@
 extends ./layouts/main.pug
 
 block content
-    ul
-        li
-            a(href=routes.home) 메인
-        li
-            a(href=routes.videos) 영상
-        li
-            a(href=routes.boards) 게시판
+    include ./partials/list.pug
     .user__profile
         .user__profile__header
             if user.avataUrl
                 img.avatar(src=user.avataUrl)
             h4.profile_username=user.name
-    a(href=routes.yourPost(id)) 작성글보기
+        a(href=routes.yourPost(id)) 작성글보기

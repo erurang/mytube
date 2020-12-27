@@ -38,6 +38,7 @@ export const naverLoginCallback = async (
       user.naverId = id;
       user.name = user.name ? user.name : nickname;
       user.email = email;
+      user.avataUrl = user.avataUrl ? user.avataUrl : "https://mytubeclone.s3.amazonaws.com/avatar/a9cbfe8bfa2a2b98a408c2a6c1b42157";
       user.save();
       return done(null, user);
     } else {
@@ -45,6 +46,7 @@ export const naverLoginCallback = async (
         email,
         name: nickname,
         naverId: id,
+        avataUrl : "https://mytubeclone.s3.amazonaws.com/avatar/a9cbfe8bfa2a2b98a408c2a6c1b42157"
       });
       return done(null, newUser);
     }

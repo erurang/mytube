@@ -4,30 +4,25 @@ include ./mixins/videoBlock.pug
 include ./mixins/boardBlock.pug
 
 block content
-    ul
-        li
-            a(href=routes.home) 메인
-        li
-            a(href=routes.videos) 영상
-        li
-            a(href=routes.boards) 게시판
-    p 비디오
-        .videos
-            if (videos)
-                each video in videos
-                    +videoBlock({
-                        title:video.title,
-                        views:video.views,
-                        fileUrl:video.fileUrl,
-                        id:video.id
-                    })
-    p 게시판
-        .boards
-            if (boards)
-                each board in boards
-                    +boardBlock({
-                        title:board.title,
-                        createdAt:board.createdAt,
-                        views:board.views,
-                        id:board.id  
-                    })
+    include ./partials/list.pug
+    .post_wrap
+            p 비디오
+                .videos
+                    if (videos)
+                        ul
+                            each video in videos
+                                li
+                                    a(href=routes.videoDetail(video.id))
+                                        video(src=video.fileUrl width="400px" )
+            p 게시판
+                .boards
+                    if (boards)
+                        ul
+                            each board in boards
+                                li                    
+                                    a(href=routes.boardsDetail(board.id))
+                                        span(class="boardTitle")=board.title
+                                        span(class="boardViews") 조회수 
+                                            span=board.views
+                                                span 회•
+                                                    span=board.createdAt    

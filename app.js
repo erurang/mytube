@@ -1,42 +1,57 @@
 import express from "express";
 import { middleWare } from "./middleWare.js";
-import bodyParser from "body-parser";
-import boardsRouters from "./routers/boardsRouters.js";
-import homeRouter from "./routers/homeRouters.js";
-import searchRouter from "./routers/searchRouters.js";
-import videoRouter from "./routers/videoRouters.js";
+
+
+// router
 import routes from "./routes.js";
+import homeRouter from "./routers/homeRouters.js";
 import joinRouter from "./routers/joinRouter.js";
 import loginRouter from "./routers/loginRouter.js";
+import searchRouter from "./routers/searchRouters.js";
+import videoRouter from "./routers/videoRouters.js";
+import boardsRouters from "./routers/boardsRouters.js";
+import userRouter from "./routers/userRouters.js";
+import apiRouter from "./routers/apiRouter.js";
 
+// mongo
 import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
 
-import passport from "passport";
-import session from "express-session";
+// 
+import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
+import session from "express-session";
 
+// auth
 import "./passport.js";
+import passport from "passport";
 
+// process
 import dotenv from "dotenv";
-import userRouter from "./routers/userRouters.js";
-import apiRouter from "./routers/apiRouter.js";
 dotenv.config();
+
 
 const app = express();
 
 const CookieStore = MongoStore(session);
 
+// 템플릿을 pug로 설정
 app.set("view engine", "pug");
 
+// localhost로 작업할때 // 외부 클라우드일땐 필요없음.
 app.use("/uploads", express.static("uploads"))
 app.use("/users",express.static("uploads"));
 app.use("/videos/uploads", express.static("uploads"));
+
+// 정적파일들 보관 (js.css)
+app.use("/static",express.static("static"))
+
 
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// 세션관리
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
@@ -45,6 +60,7 @@ app.use(
     store: new CookieStore({ mongooseConnection: mongoose.connection }),
   })
 );
+
 // cookieParser가 쿠키를 해석하고
 // 이니셜라이즈가 쿠키를 들여다보고
 app.use(passport.initialize());
@@ -53,27 +69,14 @@ app.use(passport.session());
 
 app.use(middleWare);
 
-// 메인
+// Router 관리
 app.use(routes.home, homeRouter);
-
-// 검색
 app.use(routes.search, searchRouter);
-
-// 가입
 app.use(routes.join, joinRouter);
-
-// 로그인/로그아웃
 app.use(routes.login, loginRouter);
-
-// 유저
 app.use(routes.users,userRouter);
-
-// 게시판
 app.use(routes.boards, boardsRouters);
-
-// 비디오
 app.use(routes.videos, videoRouter);
-
 app.use(routes.api,apiRouter);
 
 export default app;

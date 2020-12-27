@@ -1,0 +1,19 @@
+@import "./config/_variables.scss";
+@import "./config/reset.scss";
+
+@import "./partials/videoPlayer.scss";
+@import "./partials/header.scss";
+@import "./video.scss";
+@import "./partials/list.scss";
+@import "./board.scss";
+@import "./editVideo.scss";
+@import "./boardDetail.scss";
+@import "./editProfile.scss";
+@import "./post.scss";
+
+body {
+    width: 100%;
+    background-color: #181818;
+    color: #ffffff;
+}
+

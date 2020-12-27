@@ -1,7 +1,14 @@
 header.header
-    .header__button
-        a(href=routes.home) #{siteName}
-    .header__button
+    ul
+        li
+            .header__button
+                a(href=routes.home) 
+                    <i class="fab fa-youtube"></i> Mytube
+        li
+            .header__form
+                form(action=routes.search, method="get" class="form")
+                    input(type="text" placeholder="검색" name="search")
+    .header__join
         ul
             if !loggedUser
                 li
@@ -13,9 +20,3 @@ header.header
                     a(href=`/users${routes.me}`) 프로필
                 li
                     a(href=`/login${routes.logout}`) 로그아웃
-    .header__form
-        form(action=routes.search, method="get")
-            select(name="search", id="search-select")
-                option(value="영상") 영상
-                option(value="게시판") 게시판
-            input(type="text" placeholder="검색" name="search")

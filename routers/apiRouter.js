@@ -1,9 +1,24 @@
 import express from "express"
-import { registerView } from "../controllers/videoControllers.js"
+import { BCommentAdd, BCommentDelete, boardViews } from "../controllers/boardsControllers.js"
+import { deleteComment, postAddComment, registerView } from "../controllers/videoControllers.js"
+
 import routes from "../routes.js"
 
-const apiRouter = express.Router()
+const apiRouter = express.Router();
 
-apiRouter.get(routes.registerView,registerView)
+// video post delete
+apiRouter.post(routes.addcomment,postAddComment)
+apiRouter.post(routes.deleteComment,deleteComment)
 
-export default apiRouter
+// board post delete
+apiRouter.post(routes.bcommentAddComment,BCommentAdd)
+apiRouter.post(routes.bcommentDelete,BCommentDelete)
+
+
+// 조회수
+apiRouter.post(routes.registerView,registerView);
+apiRouter.post(routes.registerView,boardViews);
+
+
+
+export default apiRouter;

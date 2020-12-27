@@ -1,18 +1,23 @@
 extends ./layouts/main.pug
-include ./mixins/videoBlock.pug
+include ./mixins/videoPlayer.pug
 
 block content
-    .video_player
-        video(src=`./${video.fileUrl}` controls=true)
-    .video__info
+    include ./partials/list.pug
+        a(href=`/videos${routes.upload}`,class="videoPost") 업로드
         if (loggedUser._id == video.creator._id)
-            a(href=routes.editVideo(video.id)) 수정
-        h5.video_title=video.title
-        span.video_views=video.views
-        span.video_created=video.createdAt
-        p.video_description=video.description
-    .video__author
-        a(href=routes.userDetail(video.creator._id))=video.creator.name
-    
-            
-        
+            a(href=routes.editVideo(video.videoId)) 수정
+            a(href=routes.deleteVideo(video._id)) 삭제
+    +videoPlayer({
+        id:video.creator._id,
+        videoId:video._id,
+        src:video.fileUrl,
+        title:video.title,
+        description:video.description,
+        views:video.views,
+        createdAt:video.createdAt,
+        creator:video.creator.name,
+        creatorId:video.comments._id,
+        avata:video.creator.avataUrl,
+        comments:video.comments,
+        commentsAvata:video.comments.avataUrl
+    })

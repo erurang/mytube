@@ -1,11 +1,44 @@
 extends ./layouts/main.pug
 
 block content
-    p=title
-    span=description
-    if String(creator._id) === loggedUser._id
-        a(href=routes.boardsEdit(id)) 수정
-    p
-        a(href=routes.userDetail(creator._id))=creator.name
-    span=views
-    span=createdAt
+    include ./partials/list.pug
+        if boards.creator._id == loggedUser._id
+            a(href=routes.boardsEdit(id),class="detailEditBtn") 수정
+            a(href=routes.boardsDelete(id),class="datailEditBtn") 삭제
+    .boardsDetail
+        .titleDetail
+            p(class="detailTitle")=boards.title    
+        .boardsUser
+            a(href=routes.userDetail(boards.creator._id))
+                img(src=boards.creator.avataUrl)
+                span(class="creatorName")=boards.creator.name
+            ul
+                li 조회수 
+                    span(class="detailviews")=boards.views
+                li 작성일    
+                    span(class="detailCreate")=boards.createdAt
+        .boardsDesc
+            span=boards.description 
+        .boardsCommentHeader
+            if comments === 1
+                span.video__comment-number#jsCommentNum 1 댓글
+            else
+                span 댓글 
+                    span.video__comment-number#jsCommentNum #{comments}개
+        .boardsComment
+            img(src=loggedUser.avataUrl)
+            .boardsCommentForm
+                form#jsBoardAddComment
+                    input(type="text", placeholder="공개 댓글 추가...",name="comment",class="bcomment")
+        .CommentBlock            
+            ul#jsBCommentList
+                each item in boards.comments.reverse()
+                    li
+                        a(href=routes.userDetail(item.creator))
+                            img(src=boards.creator.avataUrl, width="48px")
+                            p=item.name
+                            span=item.text
+                            buttonBlock#Commentin
+                                if loggedUser._id == boards.creator._id
+                                    button(class="jsCommentEdit" id=`${boards.id}`) 수정
+                                    button(class="jsCommentDelete" id=`${boards.id}`) 삭제

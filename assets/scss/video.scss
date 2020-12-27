@@ -1,0 +1,59 @@
+.main_videos{
+    margin: 0 auto;
+    width: 50%;
+    .videoBlock {
+        position: relative;
+        margin-bottom: 30px;
+        video:hover{
+            transform: scale(1.02);
+            transition: all 0.3s ease-in-out;
+        }
+        a {
+            text-decoration: none;
+            color: white;  
+            .spanTitle{
+                top: 0px;
+                position: absolute;
+                display: inline-block;
+                margin: 10px 0px 0px 20px;
+                font-size: 24px;
+            }         
+            .spanTitle:hover {
+                color: #808080;
+            }
+            .spanViews {
+                top: 30px;
+                position: absolute;
+                display: inline-block;
+                margin: 10px 0px 0px 20px;
+                font-size: 18px;
+                color: #909090;
+                p {
+                    position: relative;
+                    span {
+                        position: absolute;
+                        padding: 18px 0px 0px 10px;
+                    }
+                }
+                img {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 80%;
+                }
+                .avata {
+                    margin: 20px 0px 20px 0px;
+                }
+            }
+        }
+    }
+}
+
+.videoPost {
+    text-decoration: none;
+    color: white;           
+    font-size: 24px;
+    margin-left: 100px;
+}
+.videoPost:hover {
+    color: #808080;
+}

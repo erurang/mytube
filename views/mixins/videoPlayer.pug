@@ -1,0 +1,44 @@
+mixin videoPlayer(video={})
+    .videoPlayer
+        video(src=video.src,controls=true)
+        .videoTitle
+            p=video.title
+        .videoView
+            span 조회수 
+            span=video.views
+            span|회•
+            span=video.createdAt
+            ul(class="videoBtn")
+                li
+                    <i class="fas fa-thumbs-up"></i> 0
+                li
+                    <i class="fas fa-thumbs-down"></i> 0
+        .videoCreator
+            a(href=routes.userDetail(video.id))
+                img(src=video.avata)
+                span=video.creator
+        .videoDescription
+            p=video.description
+        .videoCommentHeader
+            if video.comments.length === 1
+                span.video__comment-number#jsCommentNum 1 댓글
+            else
+                span 댓글 
+                    span.video__comment-number#jsCommentNum #{video.comments.length}개
+        .videoComment
+            img(src=loggedUser.avataUrl)
+            .videoCommentForm
+                form#jsAddComment
+                    input(type="text",name="comment" class="comment",placeholder="공개 댓글 추가...")
+        .CommentBlock
+            ul#jsCommentList
+                each videos in video.comments.reverse()
+                    li
+                        a(href=routes.userDetail(videos.creator))
+                            img(src=videos.commentsAvata, width="48px") 
+                            p=videos.name
+                            span=videos.text
+                        buttonBlock#Commentin
+                            if loggedUser._id == videos.creator
+                                button(class="jsCommentEdit" id=`${videos.id}`) 수정
+                                button(class="jsCommentDelete" id=`${videos.id}`) 삭제

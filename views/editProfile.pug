@@ -2,17 +2,13 @@
 extends ./layouts/main.pug
 
 block content
-    ul
-        li
-            a(href=routes.home) 메인
-        li
-            a(href=routes.videos) 영상
-        li
-            a(href=routes.boards) 게시판
-    .form__wrap
-        form(action=routes.editProfile(user._id) ,method="post" enctype="multipart/form-data")
-            label(for="file") 사진 파일
-            input(type="file", id="file",name="avataFile",accept="image/*",required=true)
-            input(type="text",name="name",value=user.name, placeholder="별명")
-            input(type="submit", value="수정하기")
-            
+    include ./partials/list.pug
+    .Edit_wrap
+        .Editprofile
+            img(src=loggedUser.avataUrl)
+        .EditprofileForm
+            form(action=routes.editProfile(user._id) ,method="post" enctype="multipart/form-data")
+                label(for="file") 사진
+                input(type="file", id="file",name="avataFile",accept="image/*",required=true)
+                input(type="text",name="name",value=user.name, placeholder="별명")
+                input(type="submit", value="수정하기")

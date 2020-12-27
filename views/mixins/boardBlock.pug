@@ -1,6 +1,13 @@
 mixin boardBlock(board={})
-    .boardBlock
-        a(href=routes.boardsDetail(board.id))
-            h4=board.title
-            h4=board.createdAt
-            p=board.views
+    .boardList
+        .boardBlock
+            a(href=routes.boardsDetail(board.id))
+                span(class="boardTitle")=`${board.title} `
+                    span=`+${board.comments}`
+                span(class="boardViews") 조회수 
+                    span=board.views
+                        span 회•
+                            span=board.createdAt
+                    p(class="avata")
+                        img(src=board.avata)
+                        span=board.creator

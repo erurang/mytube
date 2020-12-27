@@ -33,23 +33,27 @@ export const userDetail = async (req, res) => {
 export const getEditProfile = async (req, res) => {
   const {
     user: { _id },
-
+    
   } = req;
   const user = await User.findById(_id);
-
+  console.log(req.user)
   res.render("editProfile", { pageName: "프로필 수정", user });
 };
 
 export const postEditProfile = async (req, res) => {
   const {
     body: { name },
-    file: { path },
+    
+    // file : {path}
+    file: { location },
     user: { _id },
   } = req;
   
-    const user = await User.findOneAndUpdate({ _id }, { avataUrl: path, name });
-    console.log(user);  
+  console.log(location)
   
+    const user = await User.findOneAndUpdate({ _id }, { avataUrl: location});
+    
+    await User.findOneAndUpdate({ _id }, { name });
 
   res.redirect(`/users${routes.me}`);
 };

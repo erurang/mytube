@@ -1,9 +1,13 @@
-## Mytube (ver0.3)
+## Mytube (ver0.35) 완료
+
+이 버전 이후로 추가적인 기능은 없습니다.
+수정보완될 부분만 커밋할 예정입니다.
 
 사용된 기술스택
 --
 >Javascript Node.js</br>
 PUG Mongodb(mongoose) Passport babel 
+Webpack Scss   
 
 ver0.2
 --
@@ -41,13 +45,18 @@ ver0.3
 >- 페이스북로 가입/로그인 기능을 구현하였습니다.
 >- email이 같을시에 usermodel안의 id를 추가해 동일이메일 가입을 방지하였습니다.
 
-<!-- ver0.325
--- -->
-<!-- 별명을 수정할때 중복이 있으면 프로필로 redirect 시켰습니다. -->
+ver0.35
+--
+> 게시판/영상에 댓글 추가 삭제 수정 기능이 구현되었습니다.
+css로 약간 꾸몃습니다
+아마존서버로 영상파일/프로필사진파일을 multer를 통해 업로드합니다.
+
+
 
 ### ver0.3 카테고리
 
 Folder// </br>
+assets - front 정적파일들을 담당합니다. </br>
 controllers - 각 라우터들을 처리할 컨트롤러입니다. </br>
 routers - 각 라우터들을 컨트롤러로 연결합니다. </br>
 views - PUG 엔진으로 front를 담당합니다. </br>

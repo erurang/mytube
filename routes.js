@@ -16,6 +16,7 @@ const DELETE_VIDEO = "/:id/delete";
 
 const BOARDS = "/boards";
 const BOARDS_UPLOAD = "/upload";
+
 const BOARDS_DETAIL = "/:id";
 const BOARDS_EDIT = "/:id/edit";
 const BOARDS_DELETE = "/:id/delete";
@@ -31,8 +32,9 @@ const LOGOUT = "/logout";
 const USERS = "/users";
 const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "/:id/edit_profile";
-const CHANGE_PASSWORD = "/change_password";
+
 const ME = "/me";
+const CHANGE_PASSWORD = "/change_password";
 const MYPOST = "/:id/mypost";
 const YOURPOST = "/:id/yourpost";
 
@@ -54,6 +56,12 @@ const NAVER_CALLBACK = "/auth/naver/callback";
 
 const API = "/api";
 const REGISTER_VIEW = "/:id/view";
+
+const ADD_COMMENT = "/:id/comment"
+const DELETE_COMMENT = "/:id/comment/delete"
+
+const B_ADD_COMMENT = "/:id/Bcomment"
+const B_DELETE_COMMENT = "/:id/Bcomment/delete"
 
 const routes = {
   home: HOME,
@@ -148,5 +156,10 @@ const routes = {
   me: ME,
   api: API,
   registerView: REGISTER_VIEW,
+  addcomment : ADD_COMMENT,
+  deleteComment : DELETE_COMMENT,
+  bcommentAddComment : B_ADD_COMMENT,
+  bcommentDelete : B_DELETE_COMMENT
+  
 };
 export default routes;

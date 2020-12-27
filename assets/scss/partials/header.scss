@@ -1,0 +1,56 @@
+.header {
+    
+    background-color: #202020;
+    margin-bottom: 30px;
+    padding: 0px 200px 0px 200px;
+    height: 42px;
+    padding-top: 18px;
+
+    ul {
+        display: flex;
+        .header__button {
+            width: 200px;
+            margin-right: 200px;
+            a {
+                display: block;
+                font-size: 24px;
+            }
+            i {
+                color: red;
+                height: 24px;
+            }
+        }    
+        a {
+            text-decoration: none;
+            color: white;               
+        }
+        a:hover {
+            color: #808080;
+        }
+
+        .header__form {
+            .form{
+                input{
+                    background-color: #121212;
+                    border: 1px solid #303030;
+                    font-size: 24px;
+                    color: white;
+                    width: 800px;
+                    margin-right: 200px;
+                }
+                input:focus{
+                    outline: none;
+                }
+            }
+        }
+        
+    }
+    .header__join {
+        ul {
+            li{
+                margin-right: 20px;
+                
+            }
+        }
+    }
+}

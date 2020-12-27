@@ -33,7 +33,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 // 유저스키마에 플러그인을 쓸건데 ( 플러그인 , 유저네임이 될 필드명엔 : )
-UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });
+UserSchema.plugin(passportLocalMongoose, { usernameField: "email"},);
 
 const model = mongoose.model("User", UserSchema);
 

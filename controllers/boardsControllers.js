@@ -1,10 +1,13 @@
 import Board from "../models/Boards.js";
 import routes from "../routes.js";
-import User from "../models/User.js";
+import Comment from "../models/Comment.js"
+import User from "../models/User.js"
 
 export const boards = async (req, res) => {
   try {
-    const list = await Board.find({}).sort({ createdAt: -1 });
+    const list = await Board.find({})
+      .populate("creator")
+      .sort({ createdAt: -1 });
     res.render("boards", { pageName: "게시판", list });
   } catch (error) {
     console.log(error);
@@ -19,21 +22,17 @@ export const getBoardsUpload = (req, res) => {
 export const postBoardsUpload = async (req, res) => {
   const {
     body: { title, description },
-    user,
   } = req;
-
-  // let array = [];
 
   const newBoards = await Board.create({
     title,
     description,
-    creator: user._id,
+    creator: req.user._id,
   });
 
-  // user.boards.forEach((boards) => array.push(boards));
-  // array.push(String(newBoards._id));
-
-  // await User.findOneAndUpdate({ _id: user._id }, { board: array });
+  const user = await User.findById(req.user._id)
+  user.boards.push(newBoards._id)
+  user.save();
 
   res.redirect(routes.boardsDetail(newBoards._id));
 };
@@ -44,16 +43,16 @@ export const boardDetail = async (req, res) => {
   } = req;
 
   try {
-    const boards = await Board.findById(id).populate("creator");
+    const boards = await Board.findById(id)
+      .populate("creator")
+      .populate("comments");
 
     res.render("boardsDetail", {
       pageName: "게시판",
       id,
-      title: boards.title,
-      description: boards.description ? boards.description : [],
-      views: boards.views,
-      createdAt: boards.createdAt,
-      creator: boards.creator,
+      boards,
+      comments: boards.comments.length ? boards.comments.length : 0,
+      text: boards.comments,
     });
   } catch (error) {}
 };
@@ -89,12 +88,6 @@ export const postBoardsEdit = async (req, res) => {
     );
 
     res.redirect(routes.boardsDetail(id));
-    // res.render(routes.boardsDetail(id), {
-    //   pageName: title,
-    //   id,
-    //   title: boards.title,
-    //   description: boards.description ? boards.description : [],
-    // });
   } catch (error) {
     console.log(error);
     res.redirect(routes.boards);
@@ -111,9 +104,67 @@ export const boardsDelete = async (req, res) => {
     if (String(board.creator) !== req.user._id) {
       throw Error();
     }
+
     await Board.findOneAndRemove({ _id: id });
+
   } catch (error) {
     console.log(error);
   }
   res.redirect(routes.boards);
 };
+
+export const boardViews = async (req, res,next) => {
+  const {
+    params: { id },
+  } = req;
+
+  
+    const boards = await Board.findById(id);
+    boards.views += 1;
+    boards.save();
+    next();
+  
+};
+
+export const BCommentAdd = async (req, res) => {
+  const {
+    params: { id },
+    body: { comment },
+  } = req;
+
+  try {
+    const board = await Board.findById(id);
+    
+    const newComment = await Comment.create({
+      text: comment,
+      creator: req.user._id,
+      name: req.user.name,
+      avataUrl : req.user.avataUrl
+    });
+  
+
+    board.comments.push(newComment._id);
+    board.save();
+
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const BCommentDelete = async (req,res) => {
+  const {
+   body:{value} 
+  } = req;
+
+  try {
+    const comment = await Comment.findByIdAndDelete({_id:value});
+    comment.save();
+  }catch(error) {
+    res.status(400);
+  }finally {
+    res.status(200);
+  }
+
+}

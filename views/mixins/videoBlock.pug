@@ -1,6 +1,14 @@
 mixin videoBlock(video={})
     .videoBlock
         a(href=routes.videoDetail(video.id))
-            video.videoBlock__thumbnail(src=video.fileUrl,controls=true,autoplay=true)
-            h4.videoBlock__title=video.title
-            h6.videoBlock__views=video.views
+            video.videoBlock__thumbnail(src=video.fileUrl,witdh="200",height="200")
+            span(class="spanTitle")=`${video.title} `
+                span=`+${video.comment}`
+            span(class="spanViews") 조회수 
+                span=video.views
+                    span 회•
+                        span=video.createdAt
+                p(class="avata")
+                    img(src=video.avata)
+                    span=video.creator
+                p=video.description
