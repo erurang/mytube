@@ -63,7 +63,7 @@ views - PUG 엔진으로 front를 담당합니다. </br>
 models - mongodb의 Schema 형식입니다. </br>
 uploads - multer 미들웨어를 사용하여 upload시에 파일의 링크가 저장됩니다 </br>
 </br>
-Files// </br>
+>Files// </br>
 app.js - 모든 라우트와 미들웨어를 다룹니다.</br>
 init.js - 서버실행만 담당합니다.</br>
 middleWare.js - 변수가 전역적으로 쓰일수 있게 미들웨어로 전역로컬을 선언하였습니다.</br>
