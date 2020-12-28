@@ -1,6 +1,7 @@
 import express from "express";
 import { middleWare } from "./middleWare.js";
 
+import flash from "express-flash";
 
 // router
 import routes from "./routes.js";
@@ -17,7 +18,7 @@ import apiRouter from "./routers/apiRouter.js";
 import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
 
-// 
+//
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import session from "express-session";
@@ -30,7 +31,6 @@ import passport from "passport";
 import dotenv from "dotenv";
 dotenv.config();
 
-
 const app = express();
 
 const CookieStore = MongoStore(session);
@@ -39,13 +39,13 @@ const CookieStore = MongoStore(session);
 app.set("view engine", "pug");
 
 // localhost로 작업할때 // 외부 클라우드일땐 필요없음.
-app.use("/uploads", express.static("uploads"))
-app.use("/users",express.static("uploads"));
+app.use("/uploads", express.static("uploads"));
+app.use("/users", express.static("uploads"));
 app.use("/videos/uploads", express.static("uploads"));
+app.use("/join", express.static("uploads"));
 
 // 정적파일들 보관 (js.css)
-app.use("/static",express.static("static"))
-
+app.use("/static", express.static("static"));
 
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -68,15 +68,16 @@ app.use(passport.session());
 // 그 쿠키에 맞는 정보를 req.user로 전달함. -> middleware에서 req.user로 이용함
 
 app.use(middleWare);
+app.use(flash());
 
 // Router 관리
 app.use(routes.home, homeRouter);
 app.use(routes.search, searchRouter);
 app.use(routes.join, joinRouter);
 app.use(routes.login, loginRouter);
-app.use(routes.users,userRouter);
+app.use(routes.users, userRouter);
 app.use(routes.boards, boardsRouters);
 app.use(routes.videos, videoRouter);
-app.use(routes.api,apiRouter);
+app.use(routes.api, apiRouter);
 
 export default app;

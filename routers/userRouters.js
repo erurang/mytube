@@ -20,6 +20,6 @@ userRouter.get(routes.editProfile(), getEditProfile);
 userRouter.post(routes.editProfile(), uploadPicture, postEditProfile);
 
 userRouter.get(routes.myPost(), myPost);
-userRouter.get(routes.yourPost(),yourPost);
+userRouter.get(routes.yourPost(), yourPost);
 
 export default userRouter;

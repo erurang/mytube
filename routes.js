@@ -1,5 +1,7 @@
 // 모든 url을 다룹니다.
 
+const ABOUT = "/about";
+
 // 메인화면과 헤더
 const HOME = "/";
 const SEARCH = "/search";
@@ -15,6 +17,7 @@ const DELETE_VIDEO = "/:id/delete";
 // 게시판
 
 const BOARDS = "/boards";
+const BOARDS_HOT = "/hot";
 const BOARDS_UPLOAD = "/upload";
 
 const BOARDS_DETAIL = "/:id";
@@ -57,11 +60,23 @@ const NAVER_CALLBACK = "/auth/naver/callback";
 const API = "/api";
 const REGISTER_VIEW = "/:id/view";
 
-const ADD_COMMENT = "/:id/comment"
-const DELETE_COMMENT = "/:id/comment/delete"
+// 비디오
+const LIKE = "/:id/like";
+const UNLIKE = "/:id/unlike";
 
-const B_ADD_COMMENT = "/:id/Bcomment"
-const B_DELETE_COMMENT = "/:id/Bcomment/delete"
+// 게시글
+const BOARD_LIKE = "/:id/like/board";
+const BOARD_UNLIKE = "/:id/unlike/board";
+
+// 비디오 댓글
+const CommentLike = "/:id/CommentLike";
+const CommentunLike = "/:id/CommentunLike";
+
+const ADD_COMMENT = "/:id/comment";
+const DELETE_COMMENT = "/:id/comment/delete";
+
+const B_ADD_COMMENT = "/:id/Bcomment";
+const B_DELETE_COMMENT = "/:id/Bcomment/delete";
 
 const routes = {
   home: HOME,
@@ -156,10 +171,17 @@ const routes = {
   me: ME,
   api: API,
   registerView: REGISTER_VIEW,
-  addcomment : ADD_COMMENT,
-  deleteComment : DELETE_COMMENT,
-  bcommentAddComment : B_ADD_COMMENT,
-  bcommentDelete : B_DELETE_COMMENT
-  
+  addcomment: ADD_COMMENT,
+  deleteComment: DELETE_COMMENT,
+  bcommentAddComment: B_ADD_COMMENT,
+  bcommentDelete: B_DELETE_COMMENT,
+  like: LIKE,
+  unlike: UNLIKE,
+  boardlike: BOARD_LIKE,
+  boardunlike: BOARD_UNLIKE,
+  commentlike: CommentLike,
+  commentunlike: CommentunLike,
+  boardhot: BOARDS_HOT,
+  about: ABOUT,
 };
 export default routes;

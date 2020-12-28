@@ -1,23 +1,34 @@
-extends ./layouts/main.pug
+extends ./layouts/vDetail.pug
 include ./mixins/videoPlayer.pug
+include ./mixins/videoBlock2.pug
 
 block content
-    include ./partials/list.pug
-        a(href=`/videos${routes.upload}`,class="videoPost") 업로드
-        if (loggedUser._id == video.creator._id)
-            a(href=routes.editVideo(video.videoId)) 수정
-            a(href=routes.deleteVideo(video._id)) 삭제
-    +videoPlayer({
-        id:video.creator._id,
-        videoId:video._id,
-        src:video.fileUrl,
-        title:video.title,
-        description:video.description,
-        views:video.views,
-        createdAt:video.createdAt,
-        creator:video.creator.name,
-        creatorId:video.comments._id,
-        avata:video.creator.avataUrl,
-        comments:video.comments,
-        commentsAvata:video.comments.avataUrl
-    })
+    .videoDetailWrap
+        .videoMain
+            +videoPlayer({
+                id:video.creator._id,
+                videoId:video._id,
+                src:video.fileUrl,
+                title:video.title,
+                description:video.description,
+                views:video.views,
+                createdAt:video.createdAt,
+                creator:video.creator.name,
+                creatorId:video.comments._id,
+                avata:video.creator.avataUrl,
+                comments:video.comments,
+                like:video.like,
+                unlike:video.unlike,
+            })
+        .videoList
+            each video in videoList
+                +videoBlock2({
+                    id:video.id,
+                    title:video.title,
+                    description:video.description,
+                    views:video.views,
+                    createdAt:video.createdAt,
+                    creator:video.creator.name,
+                    avata:video.creator.avataUrl,
+                    fileUrl:video.fileUrl,
+                })  

@@ -2,11 +2,15 @@
 extends ./layouts/main.pug
 
 block content
-    .form__wrap
+    .user__profile
         form(action="", method="post", enctype="multipart/form-data")
-            label(for="file") 영상 파일
-            input(type="file", id="file",name="videoFile",required=true,accept="video/*")
-            input(type="text",placeholder="제목",name="title")
-            textarea(name="description",placeholder="내용")
-            input(type="submit",value="upload video")
+            label(for="file") 영상 파일만 올릴 수 있습니다.
+            p
+                input(type="file", id="file",name="videoFile",required=true,accept="video/*")
+            p   
+                input(type="text",placeholder="제목",name="title")
+            p
+                textarea(name="description",placeholder="내용",rows=20,cols=32)
+            p
+                input(type="submit",value="업로드")
         

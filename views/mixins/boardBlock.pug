@@ -1,13 +1,15 @@
-mixin boardBlock(board={})
-    .boardList
-        .boardBlock
-            a(href=routes.boardsDetail(board.id))
-                span(class="boardTitle")=`${board.title} `
-                    span=`+${board.comments}`
-                span(class="boardViews") 조회수 
+mixin boardBlock(board={})    
+    .videoBlock
+        a(href=routes.boardsDetail(board.id))
+            .videoTop
+                img(src=board.avata)
+            .videoBot
+                p(class="videoTitle")=board.title
+                p(class="videoCreator")=board.creator
+                p 조회수 
                     span=board.views
-                        span 회•
-                            span=board.createdAt
-                    p(class="avata")
-                        img(src=board.avata)
-                        span=board.creator
+                    |회•
+                    span=board.createdAt
+                    
+                        
+                        

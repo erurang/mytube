@@ -1,9 +1,34 @@
 extends ./layouts/main.pug
+include ./mixins/videoPlayer2.pug
+include ./mixins/videoBlock2.pug
 
 block content
-    .form__wrap
-        form(action="", method="post")
-            input(type="text",placeholder="제목",name="title",value=video.title)
-            textarea(name="description",placeholder="내용")=video.description
-            input(type="submit",value="수정")
-        a(href=routes.deleteVideo(video.id)) 삭제
+    .videoDetailWrap
+        .videoMain
+            +videoPlayer2({
+                id:video.creator._id,
+                videoId:video._id,
+                src:video.fileUrl,
+                title:video.title,
+                description:video.description,
+                views:video.views,
+                createdAt:video.createdAt,
+                creator:video.creator.name,
+                creatorId:video.comments._id,
+                avata:video.creator.avataUrl,
+                comments:video.comments,
+                like:video.like,
+                unlike:video.unlike,
+            })
+        .videoList
+            each video in videoList
+                +videoBlock2({
+                    id:video.id,
+                    title:video.title,
+                    description:video.description,
+                    views:video.views,
+                    createdAt:video.createdAt,
+                    creator:video.creator.name,
+                    avata:video.creator.avataUrl,
+                    fileUrl:video.fileUrl,
+                })  

@@ -1,14 +1,18 @@
 //- 메인 홈화면 올라온 비디오가 순서대로 올라가있을 계획
 extends ./layouts/main.pug
 
-block content
-    include ./partials/list.pug
-    .Edit_wrap
-        .Editprofile
+block content    
+    .user__profile
+        p
             img(src=loggedUser.avataUrl)
-        .EditprofileForm
-            form(action=routes.editProfile(user._id) ,method="post" enctype="multipart/form-data")
-                label(for="file") 사진
-                input(type="file", id="file",name="avataFile",accept="image/*",required=true)
-                input(type="text",name="name",value=user.name, placeholder="별명")
-                input(type="submit", value="수정하기")
+        p
+            form(action=routes.editProfile(user._id) ,method="post" enctype="multipart/form-data",required=true)
+                p
+                    label(for="file") 사진파일만 올릴 수 있습니다.
+                p
+                    input(type="file", id="file",name="avataFile",accept="image/*",required=true)
+                p   
+                    input(type="text",name="name",value=user.name, placeholder="별명")
+                p
+                    input(type="submit", value="수정")
+                

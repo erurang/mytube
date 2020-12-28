@@ -27,6 +27,14 @@ const BoardSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  like: {
+    type: Number,
+    default: 0,
+  },
+  unlike: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const model = mongoose.model("Board", BoardSchema);

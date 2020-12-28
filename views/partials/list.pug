@@ -1,7 +1,26 @@
-ul(class="listUl")
-    li(class="listMain")
-        a(href=routes.home) 메인
-    li(class="listVideo")
-        a(href=routes.videos) 영상
-    li(class="listBoard")
-        a(href=routes.boards) 게시판
+ul
+    li(class="homeli")
+        a(href=routes.home)
+            <i class="fas fa-home"></i>
+            span 홈
+    li(class="hotli")
+        a(href=routes.videos)
+            <i class="fas fa-fire"></i>
+            span 인기동영상
+    li(class="comli")
+        a(href=routes.boards) 
+            <i class="fas fa-book-open"></i>
+                span 게시판
+    li(class="comhotli")
+        a(href=`/boards${routes.boardhot}`)
+            <i class="fas fa-fire"></i>
+            span 인기게시글
+    li(class="myli")
+        a(href=routes.myPost(loggedUser._id))
+            <i class="fas fa-chalkboard-teacher"></i>
+            span 내 글
+    li(class="about")
+        a(href=routes.about)
+            <i class="fas fa-info"></i>
+            span 개발자정보
+    

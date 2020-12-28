@@ -1,22 +1,21 @@
 header.header
-    ul
-        li
-            .header__button
-                a(href=routes.home) 
-                    <i class="fab fa-youtube"></i> Mytube
-        li
-            .header__form
-                form(action=routes.search, method="get" class="form")
-                    input(type="text" placeholder="검색" name="search")
+    .header__button
+        //- button 토글
+        a(href=routes.home) 
+            <i class="fab fa-youtube"></i> Mytube
+                span(class="mini") KR
+    .header__form
+        form(action=routes.search, method="get" class="form")
+            input(type="text" placeholder="검색" name="search")
+            <i class="fas fa-search"></i>
     .header__join
-        ul
-            if !loggedUser
-                li
-                    a(href=routes.join) 회원가입
-                li
-                    a(href=routes.login) 로그인
-            else
-                li
-                    a(href=`/users${routes.me}`) 프로필
-                li
-                    a(href=`/login${routes.logout}`) 로그아웃
+        if !loggedUser
+            .right
+                a(href=routes.join) JOIN
+                a(href=routes.login) LOGIN
+        else
+            .right
+                a(href=`/videos${routes.upload}`) VIDEO UPLOAD
+                a(href=`/boards${routes.boardsUpload}`) BOARD UPLOAD
+                a(href=`/users${routes.me}`) PROFILE
+                a(href=`/login${routes.logout}`) LOGOUT

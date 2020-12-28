@@ -1,9 +1,12 @@
 extends ./layouts/main.pug
 
 block content
-    .form__wrap
+    .welcome    
+        <i class="fab fa-youtube"></i> 
+        span Welcome to Mytube
+    .join
         form(action=routes.login, method="post")
             input(type="email", name="email", placeholder="이메일",required=true)
             input(type="password",name="password",placeholder="비밀번호",required=true)
             input(type="submit", value="로그인")
-        include ./partials/socialLogin.pug
+            include ./partials/socialLogin.pug

@@ -6,7 +6,7 @@ import routes from "../routes.js";
 
 const joinRouter = express.Router();
 
-joinRouter.get(routes.home,onlyPublic,getJoin);
-joinRouter.post(routes.home,onlyPublic,postJoin,postLogin);  
+joinRouter.get(routes.home, onlyPublic, getJoin);
+joinRouter.post(routes.home, onlyPublic, postJoin, postLogin);
 
 export default joinRouter;

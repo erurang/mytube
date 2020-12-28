@@ -1,44 +1,61 @@
 extends ./layouts/main.pug
 
 block content
-    include ./partials/list.pug
-        if boards.creator._id == loggedUser._id
-            a(href=routes.boardsEdit(id),class="detailEditBtn") 수정
-            a(href=routes.boardsDelete(id),class="datailEditBtn") 삭제
-    .boardsDetail
-        .titleDetail
-            p(class="detailTitle")=boards.title    
-        .boardsUser
-            a(href=routes.userDetail(boards.creator._id))
-                img(src=boards.creator.avataUrl)
-                span(class="creatorName")=boards.creator.name
-            ul
-                li 조회수 
-                    span(class="detailviews")=boards.views
-                li 작성일    
-                    span(class="detailCreate")=boards.createdAt
-        .boardsDesc
-            span=boards.description 
-        .boardsCommentHeader
-            if comments === 1
-                span.video__comment-number#jsCommentNum 1 댓글
-            else
+    span#jscom
+    .videoDetailWrap
+        .videoPlayer
+            .videoDetailTitle
+                .videoTitle.boardTitle
+                    p=boards.title
+                .boardsDesc
+                    span=boards.description 
+                if (loggedUser._id == boards.creator._id)
+                    .videoEditBox       
+                        a(href=routes.boardsEdit(boards._id)) boardEdit 
+                            <i class="fas fa-edit"></i>
+                        a(href=routes.boardsDelete(boards._id)) boardDelete 
+                            <i class="fas fa-eraser"></i>
+                .boardsCreate
+                    a(href=routes.yourPost(boards.creator._id))
+                        img(src=boards.creator.avataUrl, width="48px") 
+                        span=boards.creator.name
+                .videoView
+                    span 조회수 
+                        span=boards.views
+                        |회•
+                        span=date
+                    .videoButton
+                        button#jsBoardsUp
+                            <i class="fas fa-thumbs-up"></i>
+                        span=boards.like
+                        button#jsBoardsDown
+                            <i class="fas fa-thumbs-down"></i> 
+                        span=boards.unlike       
+            .videoCommentHeader
                 span 댓글 
-                    span.video__comment-number#jsCommentNum #{comments}개
-        .boardsComment
-            img(src=loggedUser.avataUrl)
-            .boardsCommentForm
-                form#jsBoardAddComment
-                    input(type="text", placeholder="공개 댓글 추가...",name="comment",class="bcomment")
-        .CommentBlock            
-            ul#jsBCommentList
+                    span#jsCommentNum #{comments}개
+            .videoComment
+                img(src=loggedUser.avataUrl,width="48px",height="48px")
+                .videoCommentForm
+                    form#jsBoardAddComment
+                        input(type="text",name="comment" class="bcomment",placeholder="공개 댓글 추가...")
+            .CommentBlock            
                 each item in boards.comments.reverse()
-                    li
-                        a(href=routes.userDetail(item.creator))
-                            img(src=boards.creator.avataUrl, width="48px")
-                            p=item.name
-                            span=item.text
-                            buttonBlock#Commentin
-                                if loggedUser._id == boards.creator._id
-                                    button(class="jsCommentEdit" id=`${boards.id}`) 수정
-                                    button(class="jsCommentDelete" id=`${boards.id}`) 삭제
+                    .CommentUser
+                        a(href=routes.yourPost(item.creator))
+                            img(src=item.avataUrl, width="48px")
+                        .CommentName
+                            a(href=routes.userDetail(item.creator))
+                                p=`${item.name} `
+                                    span=item.createdAt
+                            .CommentText
+                                p=item.text
+                            button(class="thumbsUp")#jsBoardsCommentLike 
+                                <i class="fas fa-thumbs-up"></i>
+                                span=item.like
+                            button(class="thumbsDown")#jsBoardsCommentunLike 
+                                <i class="fas fa-thumbs-down"></i> 
+                                span=item.unlike
+                            if loggedUser._id == item.creator
+                                button(class="jsCommentEdit" id=`${item.id}`) 수정
+                                button(class="jsCommentDelete" id=`${item.id}`) 삭제

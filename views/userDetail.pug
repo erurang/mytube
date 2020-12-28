@@ -2,10 +2,21 @@
 extends ./layouts/main.pug
 
 block content
-    include ./partials/list.pug
-    .user__profile
-        .user__profile__header
+    .userProfile
+        .userProfileBanner
+            img(src=user.banner)
+        .userProfileImg
             if user.avataUrl
                 img.avatar(src=user.avataUrl)
-            h4.profile_username=user.name
-        a(href=routes.yourPost(id)) 작성글보기
+            span.profile_username=user.name
+            .tap
+                ul
+                    li
+                        |홈
+                    li
+                        |동영상
+                    li
+                        |게시판
+                    li
+                        |정보
+        .userPostList

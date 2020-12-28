@@ -10,8 +10,7 @@ const CommentDeleteBtn = document.querySelectorAll(".jsCommentDelete");
 
 const addBCommentForm = document.getElementById("jsBoardAddComment");
 
-
-// 비디오 댓글생성 
+// 비디오 댓글생성
 const handleSubmit = (event) => {
   event.preventDefault();
   const commentInput = addCommentForm.querySelector("input");
@@ -62,7 +61,6 @@ const CommentDelete = async (value) => {
   }
 };
 
-
 // 게시판 댓글생성
 
 const handleBSubmit = (event) => {
@@ -97,10 +95,10 @@ const BSendComment = async (comment) => {
 if (addCommentForm) {
   addCommentForm.addEventListener("submit", handleSubmit);
 
-  for (let i =0; i < CommentEditBtn.length; i++) {
-    console.log("test")
+  for (let i = 0; i < CommentEditBtn.length; i++) {
+    console.log("test");
     // CommentEditBtn[i].addEventListener("click",(handleEdit)
-    // CommentDeleteBtn[i].addEventListener("click",handleDelete)
+    CommentDeleteBtn[i].addEventListener("click", handleDelete);
   }
 
   // const CommentEditBtn = document.querySelectorAll(".jsCommentEdit");

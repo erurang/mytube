@@ -1,0 +1,40 @@
+.join {
+    display: flex;
+    justify-content: center;
+    
+    input {
+        display: block;
+        font-size: 30px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        background-color: #f9f9f9;
+        margin-bottom: 50px;
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+        transition-duration: 0.2s;
+        padding-left: 10px;
+        
+    }
+    input:focus {
+        outline: none;
+        border-bottom: 1px solid black;
+    }
+    a {
+        display: block;
+    }
+}
+
+.welcome {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    margin-bottom: 60px;
+    i {
+        color: #ff0000;
+        font-size: 40px;
+    }
+    span {
+        font-size: 40px;
+    }
+}

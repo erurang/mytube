@@ -5,13 +5,9 @@ const VideoSchema = new mongoose.Schema({
     type: String,
     required: "파일 경로가 필요합니다.",
   },
-  // posterUrl:{
-  //   type:String,
-  //   required: "파일경로가필요합니다",
-  // },
   title: {
     type: String,
-    required: "제목이 필요합니다.",
+    // required: "제목이 필요합니다.",
   },
   description: {
     type: String,
@@ -34,14 +30,14 @@ const VideoSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  like : {
+  like: {
     type: Number,
     default: 0,
   },
-  unlike : {
+  unlike: {
     type: Number,
     default: 0,
-  }
+  },
 });
 
 const model = mongoose.model("Video", VideoSchema);

@@ -38,7 +38,9 @@ export const naverLoginCallback = async (
       user.naverId = id;
       user.name = user.name ? user.name : nickname;
       user.email = email;
-      user.avataUrl = user.avataUrl ? user.avataUrl : "https://mytubeclone.s3.amazonaws.com/avatar/a9cbfe8bfa2a2b98a408c2a6c1b42157";
+      user.avataUrl = user.avataUrl
+        ? user.avataUrl
+        : "https://mytubeclone.s3.amazonaws.com/avatar/a9cbfe8bfa2a2b98a408c2a6c1b42157";
       user.save();
       return done(null, user);
     } else {
@@ -46,7 +48,8 @@ export const naverLoginCallback = async (
         email,
         name: nickname,
         naverId: id,
-        avataUrl : "https://mytubeclone.s3.amazonaws.com/avatar/a9cbfe8bfa2a2b98a408c2a6c1b42157"
+        avataUrl:
+          "https://mytubeclone.s3.amazonaws.com/avatar/a9cbfe8bfa2a2b98a408c2a6c1b42157",
       });
       return done(null, newUser);
     }
@@ -121,8 +124,8 @@ export const kakaoLoginCallback = async (
   profile,
   done
 ) => {
-  console.log(profile)
-  
+  console.log(profile);
+
   const {
     _json: {
       id,
@@ -146,7 +149,7 @@ export const kakaoLoginCallback = async (
         email,
         name: nickname,
         kakaoId: id,
-        avataUrl:profile_image,
+        avataUrl: profile_image,
       });
       return done(null, newUser);
     }

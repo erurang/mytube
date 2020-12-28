@@ -11,6 +11,7 @@ export const postJoin = async (req, res, next) => {
   } = req;
 
   if (password !== password2) {
+    req.flash("error", "패스워드가 다릅니다");
     res.status(400);
     res.render("join", { pageName: "가입" });
   } else {
@@ -25,7 +26,8 @@ export const postJoin = async (req, res, next) => {
         const user = await User({
           name,
           email,
-          avataUrl : "https://mytubeclone.s3.amazonaws.com/avatar/a9cbfe8bfa2a2b98a408c2a6c1b42157"
+          avataUrl:
+            "https://mytubeclone.s3.amazonaws.com/avatar/a9cbfe8bfa2a2b98a408c2a6c1b42157",
         });
         await User.register(user, password);
         next();

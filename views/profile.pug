@@ -2,12 +2,11 @@
 extends ./layouts/main.pug
 
 block content
-    include ./partials/list.pug
-
     .user__profile
-        .user__profile__header
+        p
             img.avatar(src=loggedUser.avataUrl)
-            h4.profile_username=user.name
+        p
+            span.profile_username=user.name
         p 
             a(href=routes.myPost(_id)) 내가쓴글
         p

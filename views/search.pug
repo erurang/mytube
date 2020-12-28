@@ -4,13 +4,15 @@ extends ./layouts/main.pug
 include ./mixins/videoBlock.pug
 
 block content
-    span #{search} 검색결과
-    .videos
+    span(class="search") "#{search}" 검색결과
+    .videoWrap
         each video in videos
             +videoBlock({
                 title:video.title,
                 views:video.views,
                 fileUrl:video.fileUrl,
-                id:video.id
+                createdAt:video.createdAt,
+                id:video.id,
+                avata:video.creator.avataUrl
             })
         

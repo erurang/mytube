@@ -1,18 +1,31 @@
-.Edit_wrap {
-    margin: 0 auto;
-    width: 30%;
-    font-size: 25px;
-    .EditprofileForm{
-        margin: 0 auto;
-        width: 50%;
-        margin-top: 50px;
-        input  {
-            font-size: 20px;
+.user__profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    img {
+        width: 300px;
+        height: 300px;
+        max-width: 300px;
+        max-height: 300px;
+        border-radius: 70%;
+    }
+    p {
+        margin: 20px 0px 10px;
+    }
+    a {
+        text-decoration: none;
+        font-size: 20px;
+        color: #808080;
+        transition: 0.5s;
+    }
+    a:hover {
+        color: #212121;   
+    }
+    form {
+        font-size: 25px;
+        input {
+            font-size: 25px;
         }
     }
-}
-
-.user__profile {
-    margin: 0 auto;
-    width: 30%;
 }

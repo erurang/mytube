@@ -7,7 +7,7 @@ dotenv.config();
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify:false
+  useFindAndModify: false,
 });
 
 // db라는 변수에 몽구스를 연결함

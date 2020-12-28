@@ -13,14 +13,22 @@ const CommentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  name : {
-   type:String,
-   required: "이름" 
-  },
-  avataUrl : {
+  name: {
     type: String,
-    required: "아바타"
-  }
+    required: "이름",
+  },
+  avataUrl: {
+    type: String,
+    required: "아바타",
+  },
+  like: {
+    type: Number,
+    default: 0,
+  },
+  unlike: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const model = mongoose.model("Comment", CommentSchema);

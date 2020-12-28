@@ -1,9 +1,12 @@
 extends ./layouts/main.pug
 
 block content
-    .form__wrap
+    .user__profile
         form(action="", method="post")
-            input(type="text",placeholder="제목",name="title")
-            textarea(name="description",placeholder="내용")
-            input(type="submit",value="upload board")
+            p
+                input(type="text",placeholder="제목",name="title")
+            p
+                textarea(name="description",placeholder="내용",rows=20,cols=32)
+            p
+                input(type="submit",value="업로드")
         

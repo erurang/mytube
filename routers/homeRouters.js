@@ -1,5 +1,5 @@
 import express from "express";
-import { home } from "../controllers/homeControllers.js";
+import { about, home } from "../controllers/homeControllers.js";
 import {
   facebookLogin,
   githubLogin,
@@ -15,6 +15,7 @@ import passport from "passport";
 
 const homeRouter = express.Router();
 
+homeRouter.get(routes.about, about);
 homeRouter.get(routes.home, home);
 
 homeRouter.get(routes.github, githubLogin);
@@ -45,7 +46,7 @@ homeRouter.get(routes.naver, naverLogin);
 
 homeRouter.get(
   routes.naverCallback,
-  passport.authenticate("naver",{failureRedirect:routes.login}),
+  passport.authenticate("naver", { failureRedirect: routes.login }),
   postNaverLogin
-)
+);
 export default homeRouter;

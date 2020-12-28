@@ -1,56 +1,63 @@
 .header {
-    
-    background-color: #202020;
-    margin-bottom: 30px;
-    padding: 0px 200px 0px 200px;
-    height: 42px;
-    padding-top: 18px;
-
-    ul {
-        display: flex;
-        .header__button {
-            width: 200px;
-            margin-right: 200px;
-            a {
-                display: block;
-                font-size: 24px;
-            }
-            i {
-                color: red;
-                height: 24px;
-            }
-        }    
-        a {
-            text-decoration: none;
-            color: white;               
-        }
-        a:hover {
-            color: #808080;
-        }
-
-        .header__form {
-            .form{
-                input{
-                    background-color: #121212;
-                    border: 1px solid #303030;
-                    font-size: 24px;
-                    color: white;
-                    width: 800px;
-                    margin-right: 200px;
-                }
-                input:focus{
-                    outline: none;
-                }
-            }
-        }
+    display: flex;
+    height: 56px;
+    background-color: #ffffff;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 16px;
+    a {
+        color:#808080;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    a:hover {
+        color: #212121;   
+        font-weight: 700px;
         
     }
+    .header__button {
+        position: relative;
+        width: 185px;
+        font-size: 24px;
+        font-weight: 600;
+        i {
+            color: #ff0000;
+        }
+        a {
+            color: #212121;
+        }
+        .mini {
+            position: absolute;
+            font-size: 10px;
+            margin-left: 5px;
+            color: #808080;
+        }
+    }
+    .header__form {
+        
+        text-align: center;
+        input {
+            width: 575px;
+            height: 30px;
+            padding: 2px 6px;
+            border: 1px solid #808080;
+        }
+        i { 
+            cursor: pointer;
+            border-radius: 0 2px 2px 0;
+            margin: 0;
+            color: #808080;
+            width: 65px;
+            padding: 1px 6px;
+            border: 1px solid #808080;
+            background-color: #f0f0f0;
+        }
+    }
     .header__join {
-        ul {
-            li{
-                margin-right: 20px;
-                
-            }
+
+        .right a {
+            margin-left: 20px;
         }
     }
 }
