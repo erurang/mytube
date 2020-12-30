@@ -24,7 +24,7 @@ const BSendComment = async (comment) => {
     method: "POST",
     data: {
       comment,
-    },
+    },    
   });
 
   if (response.status === 200) {
