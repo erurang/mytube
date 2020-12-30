@@ -155,6 +155,8 @@ export const boardViews = async (req, res, next) => {
   next();
 };
 
+// 게시판 댓글생성
+
 export const BCommentAdd = async (req, res) => {
   const {
     params: { id },
@@ -201,17 +203,32 @@ export const boardLikeUp = async (req, res) => {
     body: { boardId },
   } = req;
 
-  const board = await Board.findById(boardId);
-  board.like += 1;
-  board.save();
+  try {
+    const board = await Board.findById(boardId);
+    board.like += 1;
+    board.save();
+  } catch(error) {
+    res.status(400)
+    console.log(error)
+  } finally {
+    res.end()
+  }
 };
 
+// 게시글 싫어요
 export const boardLikeDown = async (req, res) => {
   const {
     body: { boardId },
   } = req;
 
-  const board = await Board.findById(boardId);
-  board.unlike += 1;
-  board.save();
+  try {
+    const board = await Board.findById(boardId);
+    board.unlike += 1;
+    board.save();
+  } catch(error) {
+    res.status(400)
+    console.log(error)
+  } finally {
+    res.end()
+  }
 };

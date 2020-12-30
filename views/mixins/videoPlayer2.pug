@@ -51,7 +51,4 @@ mixin videoPlayer2(video={})
                             span=videos.like
                         button(class="thumbsDown")#jsCommentunLike 
                             <i class="fas fa-thumbs-down"></i> 
-                            span=videos.unlike                    
-                        if loggedUser._id == videos.creator
-                            button(class="jsCommentEdit" id=`${videos.id}`) 수정
-                            button(class="jsCommentDelete" id=`${videos.id}`) 삭제
+                            span=videos.unlike

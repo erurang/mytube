@@ -4,7 +4,6 @@ extends ./layouts/main.pug
 block content
     .user__profile
         form(action="", method="post", enctype="multipart/form-data")
-            label(for="file") 영상 파일만 올릴 수 있습니다.
             p
                 input(type="file", id="file",name="videoFile",required=true,accept="video/*")
             p   

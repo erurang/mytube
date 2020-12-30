@@ -10,6 +10,7 @@ import {
   commentLikeUp,
   commentunLikeDown,
   deleteComment,
+  editComment,
   likeUp,
   postAddComment,
   registerView,
@@ -23,6 +24,7 @@ const apiRouter = express.Router();
 
 // video post delete
 apiRouter.post(routes.addcomment, onlyLogin, postAddComment);
+apiRouter.post(routes.commnetedit, editComment)
 apiRouter.post(routes.deleteComment, deleteComment);
 
 // board post delete

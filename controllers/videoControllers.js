@@ -153,16 +153,24 @@ export const postAddComment = async (req, res) => {
   }
 };
 
+export const editComment = async (req,res) => {
+
+  console.log(req)  
+
+}
 export const deleteComment = async (req, res) => {
   const {
     body: { value },
   } = req;
 
   try {
-    const comment = await Comment.findOneAndDelete({ _id: value });
-    comment.save();
-  } catch (error) {
+    await Comment.findOneAndDelete({ _id: value });
+    
+  } catch (error) { 
+    console.log(error)
     res.status(400);
+  } finally {
+    res.end()
   }
 };
 
@@ -171,9 +179,16 @@ export const likeUp = async (req, res) => {
     body: { videoId },
   } = req;
 
-  const video = await Video.findById(videoId);
-  video.like += 1;
-  video.save();
+  try {
+    const video = await Video.findById(videoId);
+    video.like += 1;
+    video.save();
+  }catch(error){
+    console.log(error)
+    res.status(400)
+  } finally {
+    res.end()
+  }
 };
 
 export const unlikeDown = async (req, res) => {
@@ -181,28 +196,51 @@ export const unlikeDown = async (req, res) => {
     body: { videoId },
   } = req;
 
-  const video = await Video.findById(videoId);
-  video.unlike += 1;
-  video.save();
+  try {
+    const video = await Video.findById(videoId);
+    video.unlike += 1;
+    video.save();
+  } catch(error) {
+    console.log(error)
+    res.status(400)
+  } finally {
+    res.end()
+  }
+
 };
+
 
 // 비디오댓글
 export const commentLikeUp = async (req, res) => {
   const {
-    body: { videoId },
+    body: { value },
   } = req;
 
-  const video = await Video.findById(videoId);
-  video.like += 1;
-  video.save();
+  try {
+    const comment = await Comment.findById(value);
+    comment.like += 1;
+    comment.save();
+  }catch(error){
+    console.log(error)
+    res.status(400)
+  } finally {
+    res.end()
+  }
 };
 
 export const commentunLikeDown = async (req, res) => {
   const {
-    body: { videoId },
+    body: { value },
   } = req;
 
-  const video = await Video.findById(videoId);
-  video.unlike += 1;
-  video.save();
+  try {
+    const comment = await Comment.findById(value);
+    comment.unlike += 1;
+    comment.save();
+  }catch(error){
+    console.log(error)
+    res.status(400)
+  } finally {
+    res.end()
+  }
 };

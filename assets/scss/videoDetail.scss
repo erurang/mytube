@@ -153,11 +153,29 @@
                     span {
                         color: #606060;
                     }
+                    #jsCommentLike,
+                    #jsCommentunLike {
+                        display: inline-block;
+                        padding: 10px;
+                    }
                     .CommentText {
+                        
                         max-width: 1200px;
                         margin-top: 10px;
                         overflow: hidden;
                         margin-bottom: 20px;
+                        }
+                    .EditVideoBtn {
+                        margin-top: 10px;
+
+                        button
+                        {
+                            span {
+                                display: inline-block;
+                                padding: 10px;
+                                border-bottom: 1px solid #909090;
+                                }
+                        }
                     }
                     button {
                         border: none;
@@ -180,7 +198,7 @@
 }
 
 .videoList {
-    width: 400px;
+    width: 300px;
     height: 100px;
     a {
         text-decoration: none;
@@ -194,10 +212,14 @@
             margin-right: 10px;
         }
         .videoBot2 {
+            
+            overflow: hidden;
             .block2Title{
                 overflow: hidden;
-                max-height: 35px;
+                white-space: nowrap;
                 text-overflow: ellipsis;
+                max-height: 30px;
+                max-height: 35px;
                 font-size: 14px;
                 margin-bottom: 10px;
             }

@@ -8,8 +8,6 @@ block content
         p
             form(action=routes.editProfile(user._id) ,method="post" enctype="multipart/form-data",required=true)
                 p
-                    label(for="file") 사진파일만 올릴 수 있습니다.
-                p
                     input(type="file", id="file",name="avataFile",accept="image/*",required=true)
                 p   
                     input(type="text",name="name",value=user.name, placeholder="별명")

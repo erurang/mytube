@@ -64,19 +64,25 @@ const REGISTER_VIEW = "/:id/view";
 const LIKE = "/:id/like";
 const UNLIKE = "/:id/unlike";
 
-// 게시글
-const BOARD_LIKE = "/:id/like/board";
-const BOARD_UNLIKE = "/:id/unlike/board";
-
 // 비디오 댓글
 const CommentLike = "/:id/CommentLike";
 const CommentunLike = "/:id/CommentunLike";
 
 const ADD_COMMENT = "/:id/comment";
+const EDIT_COMMENT = "/:id/comment/edit"
 const DELETE_COMMENT = "/:id/comment/delete";
 
+// 게시글
+const BOARD_LIKE = "/:id/like/board";
+const BOARD_UNLIKE = "/:id/unlike/board";
+
+// 게시글 댓글 삭제
 const B_ADD_COMMENT = "/:id/Bcomment";
 const B_DELETE_COMMENT = "/:id/Bcomment/delete";
+
+
+// 게시판
+
 
 const routes = {
   home: HOME,
@@ -183,5 +189,6 @@ const routes = {
   commentunlike: CommentunLike,
   boardhot: BOARDS_HOT,
   about: ABOUT,
+  commnetedit : EDIT_COMMENT,
 };
 export default routes;

@@ -18,10 +18,10 @@ mixin videoPlayer(video={})
                 .videoButton
                     button#jsVideoUp
                         <i class="fas fa-thumbs-up"></i>
-                    span=video.like
+                    span(class="videoLike")=video.like
                     button#jsVideoDown
                         <i class="fas fa-thumbs-down"></i> 
-                    span=video.unlike                    
+                    span(class="videounLike")=video.unlike                    
         .videoCreator
             a(href=routes.yourPost(video.id))
                 img(src=video.avata , width="48px",height="48px")
@@ -29,15 +29,16 @@ mixin videoPlayer(video={})
                 p=video.description
         .videoCommentHeader
             span 댓글 
-                span#jsCommentNum #{video.comments.length}개
+                span#jsCommentNum #{video.comments.length}
+                span 개
         .videoComment
             img(src=loggedUser.avataUrl width="48px",height="48px")
             .videoCommentForm
                 form#jsAddComment
                     input(type="text",name="comment" class="comment",placeholder="공개 댓글 추가...")
-        .CommentBlock
+        .CommentBlock#jsCommentUser
             each videos in video.comments.reverse()        
-                .CommentUser
+                .CommentUser(id=videos.id,class="jsCommentUserBtn")
                     a(href=routes.yourPost(videos.creator))
                         img(src=videos.avataUrl, width="48px",height="48px")     
                     .CommentName
@@ -51,9 +52,10 @@ mixin videoPlayer(video={})
                             span=videos.like
                         button(class="thumbsDown")#jsCommentunLike 
                             <i class="fas fa-thumbs-down"></i> 
-                            span=videos.unlike                    
+                            span=videos.unlike
                         if loggedUser._id == videos.creator
-                            button(class="jsCommentEdit" id=`${videos.id}`)
-                                <i class="fas fa-edit"></i>
-                            button(class="jsCommentDelete" id=`${videos.id}`)
-                                <i class="fas fa-eraser"></i>
+                            .EditVideoBtn(id=videos.id)
+                                button(class="jsCommentEdit")
+                                    span 수정
+                                button(class="jsCommentDelete")
+                                    span 삭제
