@@ -27,7 +27,7 @@ passport.use(
     {
       clientID: process.env.NAVER_ID,
       clientSecret: process.env.NAVER_SECRET,
-      callbackURL: `https://arcane-coast-58191.herokuapp.com${routes.naverCallback}`,
+      callbackURL: `https://aqueous-atoll-59353.herokuapp.com${routes.naverCallback}`,
       // callbackURL: `http://localhost:4000${routes.naverCallback}`,
     },
     naverLoginCallback
@@ -38,7 +38,7 @@ passport.use(
     {
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
-      callbackURL: `https://arcane-coast-58191.herokuapp.com${routes.githubCallback}`,
+      callbackURL: `https://aqueous-atoll-59353.herokuapp.com${routes.githubCallback}`,
       // callbackURL: `http://localhost:4000${routes.githubCallback}`,
     },
     githubLoginCallback
@@ -61,7 +61,7 @@ passport.use(
     {
       clientID: process.env.KAKAO_ID,
       clientSecret: process.env.KAKAO_SECRET,
-      callbackURL: `https://arcane-coast-58191.herokuapp.com${routes.kakaoCallback}`,
+      callbackURL: `https://aqueous-atoll-59353.herokuapp.com${routes.kakaoCallback}`,
       // callbackURL: `http://localhost:4000${routes.kakaoCallback}`,
     },
     kakaoLoginCallback
