@@ -1,0 +1,238 @@
+.videoDetailWrap {
+    display: flex;
+    justify-content: center;
+    
+    padding-top: 20px;
+    .videoMain {
+        float: left;
+    }
+    
+    .videoMain::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+    .videoList {
+        float: left;
+    }
+
+    .videoPlayer {
+        .videoEditBox {
+            a {
+                display: inline-block;
+                padding-top: 10px;
+                text-decoration: none;
+                margin-right: 10px;   
+            }
+        }
+        .videoDetailTitle {
+            max-width: 1300px;
+            border-bottom: 1px solid lightgrey;
+            padding: 20px 0px 8px;
+            margin-bottom: 20px;
+            line-height: 36px;
+            .boardsDesc {
+                height: 400px;
+                max-height: 400px;
+                padding: 20px;
+            }
+            .boardsCreate {
+                margin-top: 20px;
+                img {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 80%;
+                }
+                a {
+                    position: relative;
+                    display: block;
+                    text-decoration: none;
+                    color: #212121;
+                    span {
+                        position: absolute;
+                        padding-top: 20px;
+                        padding-left: 10px;
+                        
+                    }
+                }
+            }
+        }
+        .videoTitle {
+            font-size: 22px;
+            
+            textarea {
+                resize :none;
+                max-width: 1500px;
+            }
+        }
+        .boardTitle {
+            margin-bottom: 30px;
+            
+        }   
+        .videoView {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #606060;
+            height: 40px;
+            .videoButton button{
+                border: none;
+                background-color: #f9f9f9;
+                display: inline-block;
+                color: #606060;
+                font-size: 24px;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+        }
+        .videoCreator {
+            position: relative;
+            height: 100px;
+            
+            border-bottom: 1px solid lightgrey;
+            img {
+                border-radius: 80%;
+            }
+            a {
+                text-decoration: none;
+                color: #212121;
+            }
+            span {
+                position: absolute;
+                display: inline-block;
+                margin-left: 15px;
+                padding-top: 20px;
+                font-weight: 700;
+            }
+            p {
+                padding: 10px 0px 0px 65px;
+            }
+        }
+        .videoCommentHeader{
+            margin: 24px 0px 32px;
+        }
+        .videoComment {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            img {
+                border-radius: 80%;
+            }
+            input {
+                width: 1200px;
+                margin-left: 20px;
+                border-left: none;
+                border-right: none;
+                border-top: none;
+                background-color: #f9f9f9;
+                border-bottom: 1px solid lightgray;
+                transition-duration: 0.2s;
+            }
+            input:focus {
+                outline: none;
+                border-bottom: 3px solid #909090;
+            }
+        }
+        .CommentBlock {
+            display: flex;
+            flex-direction: column;
+            .CommentUser {
+                width: 1150px;
+                display: flex;
+                margin-bottom: 30px;
+                a {
+                    text-decoration: none;
+                    color: #212121;
+                    img {
+                        border-radius: 80%;
+                        margin-right: 20px;
+                    }
+                }
+                .CommentName {
+                    font-size: 13px;
+                    span {
+                        color: #606060;
+                    }
+                    #jsCommentLike,
+                    #jsCommentunLike {
+                        display: inline-block;
+                        padding: 10px;
+                    }
+                    .CommentText {
+                        
+                        max-width: 1200px;
+                        margin-top: 10px;
+                        overflow: hidden;
+                        margin-bottom: 20px;
+                        }
+                    .EditVideoBtn {
+                        margin-top: 10px;
+
+                        button
+                        {
+                            span {
+                                display: inline-block;
+                                padding: 10px;
+                                border-bottom: 1px solid #909090;
+                                }
+                        }
+                    }
+                    button {
+                        border: none;
+                        background-color: #f9f9f9;
+                        color: #606060;
+                        cursor: pointer;
+                        margin-right: 10px;
+                        span{
+                            display: inline-block;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+
+            }
+        }
+
+
+    }   
+}
+
+.videoList {
+    width: 300px;
+    height: 100px;
+    a {
+        text-decoration: none;
+        color: #212121;
+    }
+    .videoBlock2 {
+        display: flex;
+        margin-bottom:5px;
+        margin-left: 20px;
+        .videoBlockV {
+            margin-right: 10px;
+        }
+        .videoBot2 {
+            
+            overflow: hidden;
+            .block2Title{
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                max-height: 30px;
+                max-height: 35px;
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+            .block2Creator {
+                font-size: 13px;
+                color: #606060;
+                margin-bottom: 5px;
+            }
+            .block2View {
+                font-size: 13px;
+                color: #606060;
+            }   
+        }
+    }
+}
+

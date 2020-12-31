@@ -1,0 +1,18 @@
+//- 검색후 비디오가 검색되는 화면
+extends ./layouts/main.pug
+
+include ./mixins/videoBlock.pug
+
+block content
+    span(class="search") "#{search}" 검색결과
+    .videoWrap
+        each video in videos
+            +videoBlock({
+                title:video.title,
+                views:video.views,
+                fileUrl:video.fileUrl,
+                createdAt:video.createdAt,
+                id:video.id,
+                avata:video.creator.avataUrl
+            })
+        

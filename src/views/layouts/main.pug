@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+html(lang="kr")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{siteName} | #{pageName}
+        <script src="https://kit.fontawesome.com/9525dbadf1.js" crossorigin="anonymous"></script>
+        link(rel="stylesheet",href="/static/main.css")
+    body
+        include ../partials/header
+        .container
+            .aside
+                include ../partials/list.pug
+            main
+                block content
+        script(src="/static/main.js")

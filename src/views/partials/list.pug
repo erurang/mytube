@@ -1,0 +1,31 @@
+ul
+    li(class="homeli")
+        a(href=routes.home)
+            <i class="fas fa-home"></i>
+            span HOME
+    li(class="comli")
+        a(href=routes.boards) 
+            <i class="fas fa-book-open"></i>
+                span BOARD
+    li(class="hotli")
+        a(href=routes.videos)
+            <i class="fas fa-fire"></i>
+            span HOTTEST VIDEO
+    li(class="comhotli")
+        a(href=`/boards${routes.boardhot}`)
+            <i class="fas fa-fire"></i>
+            span HOTTEST BOARD
+    li(class="myli")
+        if (loggedUser)
+            a(href=routes.myPost(loggedUser._id))
+                <i class="fas fa-chalkboard-teacher"></i>
+                span MY POST
+        else
+            a(href=routes.login)
+                <i class="fas fa-chalkboard-teacher"></i>
+                span MY POST
+    li(class="about")
+        a(href=routes.about)
+            <i class="fas fa-info"></i>
+            span DEVELOPMENT
+    

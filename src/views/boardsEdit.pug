@@ -1,0 +1,71 @@
+extends ./layouts/main.pug
+
+block content
+    span#jscom
+    .videoDetailWrap
+        .videoPlayer
+            .videoDetailTitle
+                .videoTitle.boardEdit
+                    form(method="post")
+                        p
+                            textarea(type="text",name="title",cols=150)=boards.title
+                        p
+                            textarea(type="text",name="description",cols=150,rows="25")=boards.description
+                        input(type="submit",value="수정하기")
+                if (loggedUser._id == boards.creator._id)
+                    .videoEditBox       
+                        a(href=routes.boardsEdit(boards._id)) boardEdit 
+                            <i class="fas fa-edit"></i>
+                        a(href=routes.boardsDelete(boards._id)) boardDelete 
+                            <i class="fas fa-eraser"></i>
+                .boardsCreate
+                    a(href=routes.yourPost(boards.creator._id))
+                        img(src=boards.creator.avataUrl, width="48px") 
+                        span=boards.creator.name
+                .videoView
+                    span 조회수 
+                        span=boards.views
+                        |회•
+                        span=boards.createdAt
+                    .videoButton
+                        button#jsBoardsUp
+                            <i class="fas fa-thumbs-up"></i>
+                        span=boards.like
+                        button#jsBoardsDown
+                            <i class="fas fa-thumbs-down"></i> 
+                        span=boards.unlike       
+            .videoCommentHeader
+                span 댓글 
+                    span#jsCommentNum #{comments}개
+            .videoComment
+                img(src=loggedUser.avataUrl,width="48px",height="48px")
+                .videoCommentForm
+                    form#jsBoardAddComment
+                        input(type="text",name="comment" class="bcomment",placeholder="공개 댓글 추가...")
+            .CommentBlock            
+                each item in boards.comments.reverse()
+                    .CommentUser
+                        a(href=routes.yourPost(item.creator))
+                            img(src=item.avataUrl, width="48px")
+                        .CommentName
+                            a(href=routes.userDetail(item.creator))
+                                p=`${item.name} `
+                                    span=item.createdAt
+                            .CommentText
+                                p=item.text
+                            button(class="thumbsUp")#jsBoardsCommentLike 
+                                <i class="fas fa-thumbs-up"></i>
+                                span=item.like
+                            button(class="thumbsDown")#jsBoardsCommentunLike 
+                                <i class="fas fa-thumbs-down"></i> 
+                                span=item.unlike
+                            if loggedUser._id == item.creator
+                                button(class="jsCommentEdit" id=`${item.id}`) 수정
+                                button(class="jsCommentDelete" id=`${item.id}`) 삭제
+
+    //- .form__wrap
+    //-     form(method="post")
+    //-         input(type="text" ,name="title", placeholder="제목", required=true, value=board.title)
+    //-         textarea(name="description", placeholder="내용", required=true)=board.description
+    //-         input(type="submit", value="수정")
+    //-     a(href=routes.boardsDelete(id)) 삭제

@@ -1,0 +1,19 @@
+//- 게시판
+extends ./layouts/main.pug
+include ./mixins/boardBlock.pug
+
+block content
+    span#jscom
+    .videoWrap
+        each lists in list
+            +boardBlock({
+                title:lists.title,
+                views:lists.views,
+                id:lists.id,
+                createdAt:lists.createdAt,
+                creator:lists.creator.name,
+                avata:lists.creator.avataUrl,
+                description:lists.description,
+                comments:lists.comments.length,
+            })    
+        

@@ -1,0 +1,61 @@
+mixin videoPlayer(video={})
+    .videoPlayer
+        video(src=video.src,controls=true,width="1280px",height="720px",autoplay="true")
+        if (loggedUser._id == video.id)
+                .videoEditBox
+                    a(href=routes.editVideo(video.videoId)) VideoEdit 
+                        <i class="fas fa-edit"></i>
+                    a(href=routes.deleteVideo(video.videoId)) VideoDelete 
+                        <i class="fas fa-eraser"></i>
+        .videoDetailTitle
+            .videoTitle
+                p=video.title
+            .videoView
+                span 조회수 
+                    span=video.views
+                    |회•
+                    span=video.createdAt
+                .videoButton
+                    button#jsVideoUp
+                        <i class="fas fa-thumbs-up"></i>
+                    span(class="videoLike")=video.like
+                    button#jsVideoDown
+                        <i class="fas fa-thumbs-down"></i> 
+                    span(class="videounLike")=video.unlike                    
+        .videoCreator
+            a(href=routes.yourPost(video.id))
+                img(src=video.avata , width="48px",height="48px")
+                span=video.creator
+                p=video.description
+        .videoCommentHeader
+            span 댓글 
+                span#jsCommentNum #{video.comments.length}
+                span 개
+        .videoComment
+            img(src=loggedUser.avataUrl width="48px",height="48px")
+            .videoCommentForm
+                form#jsAddComment
+                    input(type="text",name="comment" class="comment",placeholder="공개 댓글 추가...")
+        .CommentBlock#jsCommentUser
+            each videos in video.comments.reverse()        
+                .CommentUser(id=videos.id,class="jsCommentUserBtn")
+                    a(href=routes.yourPost(videos.creator))
+                        img(src=videos.avataUrl, width="48px",height="48px")     
+                    .CommentName
+                        a(href=routes.yourPost(videos.creator))
+                            p=`${videos.name} `
+                                span=videos.createdAt
+                        .CommentText
+                            p=videos.text
+                        button(class="thumbsUp")#jsCommentLike 
+                            <i class="fas fa-thumbs-up"></i>
+                            span=videos.like
+                        button(class="thumbsDown")#jsCommentunLike 
+                            <i class="fas fa-thumbs-down"></i> 
+                            span=videos.unlike
+                        if loggedUser._id == videos.creator
+                            .EditVideoBtn(id=videos.id)
+                                button(class="jsCommentEdit")
+                                    span 수정
+                                button(class="jsCommentDelete")
+                                    span 삭제
