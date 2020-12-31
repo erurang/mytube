@@ -10,6 +10,7 @@ import "./models/User.js";
 import dotenv from "dotenv";
 dotenv.config();
 
+const PORT = process.env.PORT || 4000
 app.listen(process.env.PORT, () =>
-  console.log(`Listening on http://localhost:${process.env.PORT || 8080}`)
+  console.log(`Listening on http://localhost:${PORT}`)
 );
