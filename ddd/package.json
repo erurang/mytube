@@ -2,21 +2,19 @@
   "name": "mytube",
   "version": "1.0.0",
   "description": "",
-  "main": "init.js",
   "type": "module",
+  "main": "init.js",
   "author": "erurang",
   "license": "ISC",
   "scripts": {
-    "dev:server": "nodemon babel-node nit.js --delay 2 --ignore '.scss' --ignore 'static'",
-    "dev:assets": " WEBPACK_ENV=development webpack -w",
-    "build:assets": " WEBPACK_ENV=production webpack",
-    "build:server": "babel --out-dir build --ignore 'assets','static','webpack.config.js'",
-    "build": "npm run build:server && npm run build:assets && cp -R static build && cp -R  views build",
-    "start" : "nodemon babel node init.js --delay 2",
-    "tunnel" : "lt --port 4000"
+    "dev:server": "nodemon init.js --delay 2",
+    "dev:assets": "WEBPACK_ENV=development webpack -w",
+    "build:assets": "WEBPACK_ENV=product webpack",
+    "build:server": "babel src --out-dir build",
+    "build": "npm run build:server && npm run build:assets",
+    "start": "nodemon init.js --delay 2"
   },
   "dependencies": {
-    "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
     "@babel/polyfill": "^7.12.1",
@@ -46,10 +44,10 @@
     "pug": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6",
     "autoprefixer": "^10.1.0",
     "css-loader": "^5.0.1",
     "mini-css-extract-plugin": "^1.3.3",
+    "nodemon": "^2.0.6",
     "postcss": "^8.2.1",
     "postcss-loader": "^4.1.0",
     "sass-loader": "^10.1.0",
@@ -58,6 +56,5 @@
   },
   "browserslist": [
     "defaults"
-  ],
-  "homepage": "https://erurang.github.io/mytube"
+  ]
 }

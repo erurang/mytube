@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // 데이터가 존재하는 url을 적어줌
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(process.env.MONGO_URL_PROD, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
